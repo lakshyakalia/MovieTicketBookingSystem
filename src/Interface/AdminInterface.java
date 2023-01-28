@@ -9,7 +9,7 @@ public interface AdminInterface extends Remote{
      * @param bookingCapacity
      * @return
      */
-    public String addMovieSlots(String movieID, String movieName, int bookingCapacity);
+    public String addMovieSlots(String movieID, String movieName, int bookingCapacity) throws RemoteException;
 
     /**
      * Removing Movie Slots
@@ -17,7 +17,7 @@ public interface AdminInterface extends Remote{
      * @param movieName
      * @return
      */
-    public String removeMovieSlots(String movieID, String movieName);
+    public String removeMovieSlots(String movieID, String movieName) throws RemoteException;
 
     /**
      * List all the no of tickets
@@ -26,7 +26,7 @@ public interface AdminInterface extends Remote{
      * @param movieName
      * @return
      */
-    public String listMovieShowAvailability(String movieName);
+    public String listMovieShowAvailability(String movieName) throws RemoteException;
 
     /**
      * Book Movie Tickets
@@ -36,7 +36,7 @@ public interface AdminInterface extends Remote{
      * @param noOfTickets
      * @return
      */
-    public String bookMovieTickets(String customerID, String movieID, String movieName, int noOfTickets);
+    public String bookMovieTickets(String customerID, String movieID, String movieName, int noOfTickets) throws RemoteException;
 
     /**
      * Get list of all bookings
@@ -44,7 +44,7 @@ public interface AdminInterface extends Remote{
      * @param customerID
      * @return
      */
-    public String getBookingSchedule(String customerID);
+    public String getBookingSchedule(String customerID) throws RemoteException;
 
     /**
      * Cancel any tickets booked
@@ -55,6 +55,6 @@ public interface AdminInterface extends Remote{
      * @param noOfTickets
      * @return
      */
-    public String cancelMovieTickets(String customerID, String movieID, String movieName, int noOfTickets);
-    public void test();
+    public String cancelMovieTickets(String customerID, String movieID, String movieName, int noOfTickets) throws RemoteException;
+    public void test() throws RemoteException;
 }

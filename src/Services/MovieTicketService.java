@@ -1,10 +1,12 @@
 package Services;
 
 import java.rmi.*;
+import java.rmi.server.UnicastRemoteObject;
+
 import Interface.AdminInterface;
 import Interface.CustomerInterface;
 
-public class MovieTicketService implements AdminInterface, CustomerInterface {
+public class MovieTicketService extends UnicastRemoteObject implements AdminInterface, CustomerInterface {
 
     public MovieTicketService() throws Exception{
         super();
