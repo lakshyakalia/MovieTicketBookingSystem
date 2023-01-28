@@ -13,6 +13,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
     }
 
     public String addMovieSlots(String movieID, String movieName, int bookingCapacity){
+
         return null;
     }
     public String removeMovieSlots(String movieID, String movieName){
