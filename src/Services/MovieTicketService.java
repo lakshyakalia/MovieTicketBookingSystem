@@ -8,20 +8,21 @@ import java.util.Map;
 import Interface.AdminInterface;
 import Interface.CustomerInterface;
 
+import static java.net.HttpURLConnection.*;
+//import static java.net.HttpURLConnection.HTTP_OK;
+
 public class MovieTicketService extends UnicastRemoteObject implements AdminInterface, CustomerInterface {
-//    public Map<String, Object> movieMap =new HashMap<String, Object>();
-//    public Map<String,Object> movieIDMap =new HashMap<String, Object>();
-    public HashMap<String, HashMap<String, String>> movieMap = new HashMap<>();
+    public HashMap<String, HashMap<String, Integer>> movieMap = new HashMap<>();
 
 
     public MovieTicketService() throws Exception{
         super();
-//        initializeHashedMap();
     }
 
-    public String addMovieSlots(String movieID, String movieName, int bookingCapacity){
-        System.out.println(movieID + movieName + bookingCapacity);
-        return null;
+    public int addMovieSlots(String movieID, String movieName, int bookingCapacity){
+        movieMap.put(movieName,new HashMap<String, Integer>());
+        movieMap.get(movieName).put(movieID,bookingCapacity);
+        return HTTP_CREATED;
     }
     public String removeMovieSlots(String movieID, String movieName){
         return null;

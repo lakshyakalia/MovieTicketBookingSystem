@@ -26,12 +26,16 @@ public class Client extends Constant {
                 case 1:
                     System.out.println("Please enter Movie ID");
                     String addMovieID = sc2.nextLine();
+                    /**
+                     * TODO: Check if the admin ID server is same as movie ID server
+                     */
                     System.out.println("Please enter Movie Name");
                     String addMovieName = sc2.nextLine();
                     System.out.println("Please enter Booking Capacity");
                     int addBookingCapacity = Integer.parseInt(sc2.nextLine());
 
-                    adminRef.addMovieSlots(addMovieID, addMovieName, addBookingCapacity);
+                    int res = adminRef.addMovieSlots(addMovieID, addMovieName, addBookingCapacity);
+                    System.out.println(res);
                     break;
                 case 2:
                     System.out.println("Please enter Movie ID");

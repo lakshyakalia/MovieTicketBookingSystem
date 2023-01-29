@@ -9,7 +9,7 @@ public interface AdminInterface extends Remote{
      * @param bookingCapacity
      * @return
      */
-    public String addMovieSlots(String movieID, String movieName, int bookingCapacity) throws RemoteException;
+    public int addMovieSlots(String movieID, String movieName, int bookingCapacity) throws RemoteException;
 
     /**
      * Removing Movie Slots
