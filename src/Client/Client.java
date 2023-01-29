@@ -19,22 +19,51 @@ public class Client extends Constant {
 
         if(isAdmin){
             AdminInterface adminRef = (AdminInterface) Naming.lookup(serverPort);
-//            adminRef.test();
+
             int option = Integer.parseInt(showAdminMenu());
             Scanner sc2 = new Scanner(System.in);
             switch (option){
                 case 1:
                     System.out.println("Please enter Movie ID");
-                    String movieID = sc2.nextLine();
+                    String addMovieID = sc2.nextLine();
                     System.out.println("Please enter Movie Name");
-                    String movieName = sc2.nextLine();
+                    String addMovieName = sc2.nextLine();
                     System.out.println("Please enter Booking Capacity");
-                    int bookingCapacity = Integer.parseInt(sc2.nextLine());
+                    int addBookingCapacity = Integer.parseInt(sc2.nextLine());
 
-                    adminRef.addMovieSlots(movieID, movieName, bookingCapacity);
+                    adminRef.addMovieSlots(addMovieID, addMovieName, addBookingCapacity);
                     break;
-//                case 2:
+                case 2:
+                    System.out.println("Please enter Movie ID");
+                    String removeMovieID = sc2.nextLine();
+                    System.out.println("Please enter Movie Name");
+                    String removeMovieName = sc2.nextLine();
 
+                    adminRef.removeMovieSlots(removeMovieID, removeMovieName);
+                    break;
+                case 3:
+                    System.out.println("Please enter Movie Name");
+                    String listMovieName = sc2.nextLine();
+                    adminRef.listMovieShowAvailability(listMovieName);
+                    break;
+                case 4:
+                    System.out.println("Please enter Movie ID");
+                    String bookMovieID = sc2.nextLine();
+                    System.out.println("Please enter Movie Name");
+                    String bookMovieName = sc2.nextLine();
+                    System.out.println("Please enter No of Tickets to Book");
+                    int bookNumberOfTickets = Integer.parseInt(sc2.nextLine());
+                    adminRef.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
+                case 5:
+                    adminRef.getBookingSchedule(userID);
+                case 6:
+                    System.out.println("Please enter Movie ID");
+                    String cancelBookMovieID = sc2.nextLine();
+                    System.out.println("Please enter Movie Name");
+                    String cancelBookMovieName = sc2.nextLine();
+                    System.out.println("Please enter No of Tickets to Book");
+                    int cancelBookNumberOfTickets = Integer.parseInt(sc2.nextLine());
+                    adminRef.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
             }
         }
         else {
