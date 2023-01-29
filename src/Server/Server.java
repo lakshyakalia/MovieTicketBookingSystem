@@ -11,7 +11,7 @@ public class Server extends MovieTicketService {
     public static void main(String[] args) throws Exception{
 
         MovieTicketService movieService = new MovieTicketService();
-        Naming.bind("hi", movieService);
+        Naming.rebind("hi", movieService);
         System.out.println("Server started");
     }
 }

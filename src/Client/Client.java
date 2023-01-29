@@ -114,7 +114,7 @@ public class Client extends Constant {
     }
 
     public static String getServerPort(String userID){
-        String serverSubstring = userID.substring(0,2);
+        String serverSubstring = userID.substring(0,3);
         switch (serverSubstring){
             case "ATW":
                 return getATWServer();

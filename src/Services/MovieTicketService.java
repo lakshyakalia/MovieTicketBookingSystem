@@ -2,18 +2,25 @@ package Services;
 
 import java.rmi.*;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.HashMap;
+import java.util.Map;
 
 import Interface.AdminInterface;
 import Interface.CustomerInterface;
 
 public class MovieTicketService extends UnicastRemoteObject implements AdminInterface, CustomerInterface {
+//    public Map<String, Object> movieMap =new HashMap<String, Object>();
+//    public Map<String,Object> movieIDMap =new HashMap<String, Object>();
+    public HashMap<String, HashMap<String, String>> movieMap = new HashMap<>();
+
 
     public MovieTicketService() throws Exception{
         super();
+//        initializeHashedMap();
     }
 
     public String addMovieSlots(String movieID, String movieName, int bookingCapacity){
-
+        System.out.println(movieID + movieName + bookingCapacity);
         return null;
     }
     public String removeMovieSlots(String movieID, String movieName){
@@ -33,5 +40,8 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
     }
     public void test(){
         System.out.println("Helloooo");
+    }
+    public void initializeHashedMap(){
+
     }
 }

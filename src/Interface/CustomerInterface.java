@@ -1,5 +1,7 @@
 package Interface;
 
+import java.rmi.RemoteException;
+
 public interface CustomerInterface {
 
     /**
@@ -10,7 +12,7 @@ public interface CustomerInterface {
      * @param noOfTickets
      * @return
      */
-    public String bookMovieTickets(String customerID, String movieID, String movieName, int noOfTickets);
+    public String bookMovieTickets(String customerID, String movieID, String movieName, int noOfTickets) throws RemoteException;
 
     /**
      * Get list of all bookings
@@ -18,7 +20,7 @@ public interface CustomerInterface {
      * @param customerID
      * @return
      */
-    public String getBookingSchedule(String customerID);
+    public String getBookingSchedule(String customerID) throws RemoteException;
 
     /**
      * Cancel any tickets booked
@@ -29,5 +31,5 @@ public interface CustomerInterface {
      * @param noOfTickets
      * @return
      */
-    public String cancelMovieTickets(String customerID, String movieID, String movieName, int noOfTickets);
+    public String cancelMovieTickets(String customerID, String movieID, String movieName, int noOfTickets) throws RemoteException;
 }
