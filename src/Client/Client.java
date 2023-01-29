@@ -24,11 +24,24 @@ public class Client extends Constant {
             Scanner sc2 = new Scanner(System.in);
             switch (option){
                 case 1:
-                    System.out.println("Please enter Movie ID");
-                    String addMovieID = sc2.nextLine();
+                    String addMovieID = "";
+
                     /**
-                     * TODO: Check if the admin ID server is same as movie ID server
+                     * Condition for admin adding only
+                     * those movie which falls in his
+                     * server domain
                      */
+                    while (true){
+                        System.out.println("Please enter Movie ID");
+                        addMovieID = sc2.nextLine();
+                        if(addMovieID.substring(0,3).equals(userID.substring(0,3))){
+                            break;
+                        }
+                        else {
+                            System.out.println("Incorrect Server. Please try again.");
+                        }
+                    }
+
                     System.out.println("Please enter Movie Name");
                     String addMovieName = sc2.nextLine();
                     System.out.println("Please enter Booking Capacity");
