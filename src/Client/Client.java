@@ -24,6 +24,7 @@ public class Client extends Constant {
             Scanner sc2 = new Scanner(System.in);
             switch (option){
                 case 1:
+                {
                     String addMovieID = "";
 
                     /**
@@ -50,14 +51,29 @@ public class Client extends Constant {
                     int res = adminRef.addMovieSlots(addMovieID, addMovieName, addBookingCapacity);
                     System.out.println(res);
                     break;
+                }
                 case 2:
-                    System.out.println("Please enter Movie ID");
-                    String removeMovieID = sc2.nextLine();
+                {
                     System.out.println("Please enter Movie Name");
                     String removeMovieName = sc2.nextLine();
 
-                    adminRef.removeMovieSlots(removeMovieID, removeMovieName);
+                    String removeMovieID = "";
+
+                    while (true){
+                        System.out.println("Please enter Movie ID");
+                        removeMovieID = sc2.nextLine();
+                        if(removeMovieID.substring(0,3).equals(userID.substring(0,3))){
+                            break;
+                        }
+                        else {
+                            System.out.println("Incorrect Server. Please try again.");
+                        }
+                    }
+
+                    int res = adminRef.removeMovieSlots(removeMovieID, removeMovieName);
+                    System.out.println(res);
                     break;
+                }
                 case 3:
                     System.out.println("Please enter Movie Name");
                     String listMovieName = sc2.nextLine();

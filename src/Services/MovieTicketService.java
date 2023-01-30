@@ -2,6 +2,7 @@ package Services;
 
 import java.rmi.*;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,12 +23,21 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
     public int addMovieSlots(String movieID, String movieName, int bookingCapacity){
         movieMap.put(movieName,new HashMap<String, Integer>());
         movieMap.get(movieName).put(movieID,bookingCapacity);
+        System.out.println(movieMap);
         return HTTP_CREATED;
     }
-    public String removeMovieSlots(String movieID, String movieName){
-        return null;
+    public int removeMovieSlots(String movieID, String movieName){
+        movieMap.get(movieName).remove(movieID);
+        /**
+         * TODO: Shift customer with existing movie slot
+         * TODO: to the next available movie show
+         */
+        System.out.println(movieMap);
+        return 200;
     }
     public String listMovieShowAvailability(String movieName){
+        ArrayList<String> listShows = new ArrayList<String>();
+//        []
         return null;
     }
     public String bookMovieTickets(String customerID, String movieID, String movieName, int noOfTickets) {

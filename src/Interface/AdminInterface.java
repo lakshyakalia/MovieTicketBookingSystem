@@ -17,7 +17,7 @@ public interface AdminInterface extends Remote{
      * @param movieName
      * @return
      */
-    public String removeMovieSlots(String movieID, String movieName) throws RemoteException;
+    public int removeMovieSlots(String movieID, String movieName) throws RemoteException;
 
     /**
      * List all the no of tickets

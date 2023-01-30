@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Add movie slots functionality for admin in-progress">
+    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Handled condition for admin adding movie slots for his domain server">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Server.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/AdminInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/MovieTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/MovieTicketService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,13 +41,26 @@
     "settings.editor.selected.configurable": "project.propCompiler"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="ATWServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Server.ATWServer" />
       <module name="MovieTicketsBookingSystem" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Client.Client" />
+      <module name="MovieTicketsBookingSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -69,6 +83,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Client" />
         <item itemvalue="Application.ATWServer" />
         <item itemvalue="Application.Server" />
       </list>
@@ -139,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674979212169</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Handled condition for admin adding movie slots for his domain server">
+      <created>1674979735344</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674979735344</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,6 +184,7 @@
     <MESSAGE value="Updated the Client file Menu functions for customer" />
     <MESSAGE value="Tested end to end client and server communication using RMI" />
     <MESSAGE value="Add movie slots functionality for admin in-progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add movie slots functionality for admin in-progress" />
+    <MESSAGE value="Handled condition for admin adding movie slots for his domain server" />
+    <option name="LAST_COMMIT_MESSAGE" value="Handled condition for admin adding movie slots for his domain server" />
   </component>
 </project>
