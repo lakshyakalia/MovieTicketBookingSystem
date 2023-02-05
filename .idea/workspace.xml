@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Handled condition for admin adding movie slots for his domain server">
+    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Updated UI and return type for addBookingSlot">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Interface/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/AdminInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/CustomerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/CustomerInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/ATWServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ATWServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/OUTServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/OUTServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/VERServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/VERServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/MovieTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/MovieTicketService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +42,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "settings.editor.selected.configurable": "project.propCompiler"
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RunManager" selected="Application.Client">
@@ -68,8 +72,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OUTServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Server.OUTServer" />
+      <module name="MovieTicketsBookingSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Server.Server" />
+      <module name="MovieTicketsBookingSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VERServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Server.VERServer" />
       <module name="MovieTicketsBookingSystem" />
       <extension name="coverage">
         <pattern>
@@ -84,6 +114,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Client" />
+        <item itemvalue="Application.VERServer" />
+        <item itemvalue="Application.OUTServer" />
         <item itemvalue="Application.ATWServer" />
         <item itemvalue="Application.Server" />
       </list>
@@ -161,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674979735344</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Updated UI and return type for addBookingSlot">
+      <created>1675120235533</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1675120235533</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -185,6 +224,38 @@
     <MESSAGE value="Tested end to end client and server communication using RMI" />
     <MESSAGE value="Add movie slots functionality for admin in-progress" />
     <MESSAGE value="Handled condition for admin adding movie slots for his domain server" />
-    <option name="LAST_COMMIT_MESSAGE" value="Handled condition for admin adding movie slots for his domain server" />
+    <MESSAGE value="Updated UI and return type for addBookingSlot" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated UI and return type for addBookingSlot" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Server/OUTServer.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Server/ATWServer.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

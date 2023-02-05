@@ -1,5 +1,6 @@
 package Interface;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 
 public interface CustomerInterface {
@@ -20,7 +21,7 @@ public interface CustomerInterface {
      * @param customerID
      * @return
      */
-    public String getBookingSchedule(String customerID) throws RemoteException;
+    public String getBookingSchedule(String customerID) throws IOException;
 
     /**
      * Cancel any tickets booked

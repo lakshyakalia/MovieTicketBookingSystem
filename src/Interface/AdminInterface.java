@@ -1,4 +1,5 @@
 package Interface;
+import java.io.IOException;
 import java.rmi.*;
 public interface AdminInterface extends Remote{
 
@@ -26,7 +27,7 @@ public interface AdminInterface extends Remote{
      * @param movieName
      * @return
      */
-    public String listMovieShowAvailability(String movieName) throws RemoteException;
+    public String listMovieShowAvailability(String movieName) throws IOException;
 
     /**
      * Book Movie Tickets
@@ -44,7 +45,7 @@ public interface AdminInterface extends Remote{
      * @param customerID
      * @return
      */
-    public String getBookingSchedule(String customerID) throws RemoteException;
+    public String getBookingSchedule(String customerID) throws IOException;
 
     /**
      * Cancel any tickets booked
