@@ -84,7 +84,6 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
     }
     public String listMovieShowAvailabilityUDP(String movieName) {
         return movieMap.get(movieName).keySet().toString();
-//        return listShows.toString();
     }
     public String bookMovieTickets(String customerID, String movieID, String movieName, int noOfTickets) {
         return null;
