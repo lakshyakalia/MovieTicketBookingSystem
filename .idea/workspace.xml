@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Updated UI and return type for addBookingSlot">
+    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="UDP connection for listMovieShowAvailability in progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/AdminInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/CustomerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/CustomerInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ATWServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ATWServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/OUTServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/OUTServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/VERServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/VERServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/MovieTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/MovieTicketService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -200,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675120235533</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="UDP connection for listMovieShowAvailability in progress">
+      <created>1675581633791</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1675581633791</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -225,35 +228,46 @@
     <MESSAGE value="Add movie slots functionality for admin in-progress" />
     <MESSAGE value="Handled condition for admin adding movie slots for his domain server" />
     <MESSAGE value="Updated UI and return type for addBookingSlot" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated UI and return type for addBookingSlot" />
+    <MESSAGE value="UDP connection for listMovieShowAvailability in progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="UDP connection for listMovieShowAvailability in progress" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
-          <line>104</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/OUTServer.java</url>
           <line>54</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
-          <line>84</line>
-          <option name="timeStamp" value="10" />
+          <url>file://$PROJECT_DIR$/src/Server/ATWServer.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Server/ATWServer.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
+          <line>79</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
+          <line>116</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Server/VERServer.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

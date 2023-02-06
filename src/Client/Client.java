@@ -83,7 +83,8 @@ public class Client extends Constant {
                     case 3:{
                         System.out.println("Please enter Movie Name");
                         String listMovieName = sc2.nextLine();
-                        adminRef.listMovieShowAvailability(listMovieName);
+                        String res = adminRef.listMovieShowAvailability(listMovieName);
+                        System.out.println(res);
                         break;
                     }
                     case 4:{

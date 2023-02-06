@@ -25,7 +25,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
     String serverName = "";
     int atwPort = 4556;
     int outPort = 4557;
-    int verPort = 4557;
+    int verPort = 4558;
 
 
     public MovieTicketService(String serverID,String serverName) throws Exception{
@@ -71,6 +71,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
             serverTwoResponse = sendMsgToServer("listMovieShowAvailability",null,movieName,null,0,verPort);
         } else if(this.serverID.equals("out")){
             serverOneResponse = sendMsgToServer("listMovieShowAvailability",null,movieName,null,0,atwPort);
+            System.out.println(serverOneResponse);
             serverTwoResponse = sendMsgToServer("listMovieShowAvailability",null,movieName,null,0,verPort);
         } else if (this.serverID.equals("ver")) {
             serverOneResponse = sendMsgToServer("listMovieShowAvailability",null,movieName,null,0,atwPort);
@@ -113,10 +114,10 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
          * UDP response from
          * remote server
          */
-        byte[] byteReceive = new byte[1024];
+        byte[] byteReceive = new byte[2048];
         DatagramPacket dpReceived = new DatagramPacket(byteReceive,byteReceive.length);
         ds.receive(dpReceived);
-
-        return new String(dpReceived.getData());
+        System.out.println(dpReceived.getData());
+        return new String(dpReceived.getData()).trim();
     }
 }

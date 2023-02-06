@@ -5,6 +5,7 @@ import Services.MovieTicketService;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.SocketException;
 import java.rmi.Naming;
 
@@ -31,10 +32,11 @@ public class ATWServer extends MovieTicketService {
             String callbackResponse = "";
 
             byte[] byteRequest = new byte[1024];
-//            while (true){
+            while (true){
+
                 DatagramPacket dp = new DatagramPacket(byteRequest,byteRequest.length);
                 ds.receive(dp);
-                String requestString = new String(dp.getData(), 0, dp.getLength());
+                String requestString = new String(dp.getData(), 0, dp.getLength()).trim();
                 String[] requestStringArr = requestString.split(";");
                 String func = requestStringArr[0];
                 String userID = requestStringArr[1];
@@ -64,12 +66,14 @@ public class ATWServer extends MovieTicketService {
                         break;
                     }
                 }
-                byte[] byteToSend = callbackResponse.getBytes();
-                DatagramPacket response = new DatagramPacket(byteToSend, byteToSend.length, dp.getAddress(),
+//                byte[] byteToSend = callbackResponse.trim().getBytes();
+                byte[] byteToSend = "Send Message".getBytes();
+                InetAddress ia = InetAddress.getLocalHost();
+                DatagramPacket response = new DatagramPacket(byteToSend, byteToSend.length, ia,
                         dp.getPort());
                 ds.send(response);
-
-//            }
+//                ds.close();
+            }
 
         }
         catch (SocketException e){
