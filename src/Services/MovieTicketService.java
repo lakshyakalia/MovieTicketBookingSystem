@@ -125,8 +125,26 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         return responseString;
 //        return null;
     }
-    public String cancelMovieTickets(String customerID, String movieID, String movieName, int noOfTickets){
-        return null;
+    public String cancelMovieTickets(String userID, String movieID, String movieName, int noOfTickets) throws IOException {
+        String targetServer = movieID.substring(0,3).toLowerCase();
+        String serverResponse = "";
+
+        if(this.serverID.equals(targetServer)){
+            if(movieMap.get(movieName).get(movieID) == noOfTickets){
+                userMap.remove(userID);
+            }else {
+                userMap.get(userID).get(movieID).put(movieName,noOfTickets);
+                return "201";
+            }
+        } else if (targetServer.equals("atw")) {
+            serverResponse = sendMsgToServer("cancelMovieTickets",userID,movieName,movieID,noOfTickets,atwPort);
+        } else if (targetServer.equals("out")) {
+            serverResponse = sendMsgToServer("cancelMovieTickets",userID,movieName,movieID,noOfTickets,outPort);
+        } else if (targetServer.equals("ver")) {
+            serverResponse = sendMsgToServer("cancelMovieTickets",userID,movieName,movieID,noOfTickets,verPort);
+        }
+        return serverResponse;
+//        return null;
     }
     public void test(){
         System.out.println("Helloooo");
