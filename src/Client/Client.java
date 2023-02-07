@@ -94,11 +94,13 @@ public class Client extends Constant {
                         String bookMovieName = sc2.nextLine();
                         System.out.println("Please enter No of Tickets to Book");
                         int bookNumberOfTickets = Integer.parseInt(sc2.nextLine());
-                        adminRef.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
+                        String res = adminRef.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
+                        System.out.println(res);
                         break;
                     }
                     case 5:{
-                        adminRef.getBookingSchedule(userID);
+                        String res = adminRef.getBookingSchedule(userID);
+                        System.out.println(res);
                         break;
                     }
                     case 6:{
@@ -108,7 +110,8 @@ public class Client extends Constant {
                         String cancelBookMovieName = sc2.nextLine();
                         System.out.println("Please enter No of Tickets to Book");
                         int cancelBookNumberOfTickets = Integer.parseInt(sc2.nextLine());
-                        adminRef.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
+                        String res = adminRef.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
+                        System.out.println(res);
                         break;
                     }
                     case 7:{

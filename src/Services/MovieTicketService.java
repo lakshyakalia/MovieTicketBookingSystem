@@ -19,7 +19,10 @@ import static java.net.HttpURLConnection.*;
 //import static java.net.HttpURLConnection.HTTP_OK;
 
 public class MovieTicketService extends UnicastRemoteObject implements AdminInterface, CustomerInterface {
+//    MovieName > MovieID : BookingCapacity
     public HashMap<String, HashMap<String, Integer>> movieMap = new HashMap<>();
+//    UserID > MovieName > MovieID : noOfTickets
+    public HashMap<String, HashMap<String, HashMap<String, Integer>>> userMap = new HashMap<>();
     DatagramSocket dss;
     String serverID = "";
     String serverName = "";
@@ -63,7 +66,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         String serverTwoResponse = "";
 
 
-        String s = movieMap.get(movieName).keySet().toString();
+        String responseString = movieMap.get(movieName).keySet().toString();
 
 
         if(this.serverID.equals("atw")){
@@ -77,16 +80,28 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
             serverOneResponse = sendMsgToServer("listMovieShowAvailability",null,movieName,null,0,atwPort);
             serverTwoResponse = sendMsgToServer("listMovieShowAvailability",null,movieName,null,0,outPort);
         }
-        s = s + "\n" + serverOneResponse + "\n" + serverTwoResponse;
+        responseString = responseString + "\n" + serverOneResponse + "\n" + serverTwoResponse;
 //        listShows.add(serverTwoResponse);
+        return responseString;
+    }
+    public String bookMovieTickets(String userID, String movieID, String movieName, int noOfTickets) throws IOException {
+        String targetServer = movieID.substring(0,3).toLowerCase();
+        String serverResponse = "";
 
-        return s;
-    }
-    public String listMovieShowAvailabilityUDP(String movieName) {
-        return movieMap.get(movieName).keySet().toString();
-    }
-    public String bookMovieTickets(String customerID, String movieID, String movieName, int noOfTickets) {
-        return null;
+        if(this.serverID.equals(targetServer)){
+            userMap.put(userID,new HashMap<String, HashMap<String, Integer>>());
+            userMap.get(userID).put(movieID, new HashMap<String, Integer>());
+
+            userMap.get(userID).get(movieID).put(movieName,noOfTickets);
+            return "201";
+        } else if (targetServer.equals("atw")) {
+            serverResponse = sendMsgToServer("bookMovieTickets",userID,movieName,movieID,noOfTickets,atwPort);
+        } else if (targetServer.equals("out")) {
+            serverResponse = sendMsgToServer("bookMovieTickets",userID,movieName,movieID,noOfTickets,outPort);
+        } else if (targetServer.equals("ver")) {
+            serverResponse = sendMsgToServer("bookMovieTickets",userID,movieName,movieID,noOfTickets,verPort);
+        }
+        return serverResponse;
     }
     public String getBookingSchedule(String customerID){
         return null;
@@ -96,6 +111,9 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
     }
     public void test(){
         System.out.println("Helloooo");
+    }
+    public String listMovieShowAvailabilityUDP(String movieName) {
+        return movieMap.get(movieName).keySet().toString();
     }
     public String sendMsgToServer(String func, String userID,String movieName, String movieID,int noOfTickets, int port) throws IOException {
         /**

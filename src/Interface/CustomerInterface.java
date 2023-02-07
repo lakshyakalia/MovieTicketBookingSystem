@@ -13,7 +13,7 @@ public interface CustomerInterface {
      * @param noOfTickets
      * @return
      */
-    public String bookMovieTickets(String customerID, String movieID, String movieName, int noOfTickets) throws RemoteException;
+    public String bookMovieTickets(String customerID, String movieID, String movieName, int noOfTickets) throws IOException;
 
     /**
      * Get list of all bookings
