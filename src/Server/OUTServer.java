@@ -66,7 +66,7 @@ public class OUTServer extends MovieTicketService {
                         break;
                     }
                     case "getBookingSchedule": {
-                        String res = outMovieService.getBookingSchedule(userID);
+                        String res = outMovieService.getBookingScheduleUDP(userID);
                         callbackResponse = requestStringArr + ";" + res;
                         break;
                     }

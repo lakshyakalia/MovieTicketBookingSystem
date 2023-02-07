@@ -53,7 +53,7 @@ public class VERServer extends MovieTicketService {
                         break;
                     }
                     case "getBookingSchedule": {
-                        String res = verMovieService.getBookingSchedule(userID);
+                        String res = verMovieService.getBookingScheduleUDP(userID);
                         callbackResponse = requestStringArr + ";" + res;
                         break;
                     }

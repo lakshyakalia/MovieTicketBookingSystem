@@ -103,8 +103,27 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         }
         return serverResponse;
     }
-    public String getBookingSchedule(String customerID){
-        return null;
+    public String getBookingSchedule(String userID) throws IOException {
+        String serverOneResponse = "";
+        String serverTwoResponse = "";
+
+        String responseString = userMap.get(userID).keySet().toString();
+
+        if(this.serverID.equals("atw")){
+            serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,outPort);
+            serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,verPort);
+        } else if(this.serverID.equals("out")){
+            serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,atwPort);
+            System.out.println(serverOneResponse);
+            serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,verPort);
+        } else if (this.serverID.equals("ver")) {
+            serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,atwPort);
+            serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,outPort);
+        }
+        responseString = responseString + "\n" + serverOneResponse + "\n" + serverTwoResponse;
+//        listShows.add(serverTwoResponse);
+        return responseString;
+//        return null;
     }
     public String cancelMovieTickets(String customerID, String movieID, String movieName, int noOfTickets){
         return null;
@@ -114,6 +133,9 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
     }
     public String listMovieShowAvailabilityUDP(String movieName) {
         return movieMap.get(movieName).keySet().toString();
+    }
+    public String getBookingScheduleUDP(String userID){
+        return userMap.get(userID).keySet().toString();
     }
     public String sendMsgToServer(String func, String userID,String movieName, String movieID,int noOfTickets, int port) throws IOException {
         /**
