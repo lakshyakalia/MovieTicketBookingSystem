@@ -57,5 +57,5 @@ public interface AdminInterface extends Remote{
      * @return
      */
     public String cancelMovieTickets(String customerID, String movieID, String movieName, int noOfTickets) throws IOException;
-    public void test() throws RemoteException;
+//    public void test() throws RemoteException;
 }

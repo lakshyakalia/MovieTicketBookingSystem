@@ -95,7 +95,7 @@ public class Client extends Constant {
                         System.out.println("Please enter No of Tickets to Book");
                         int bookNumberOfTickets = Integer.parseInt(sc2.nextLine());
                         String res = adminRef.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
-                        System.out.println(res);
+                        System.out.println(res.split(";")[res.split(";").length-1]);
                         break;
                     }
                     case 5:{
