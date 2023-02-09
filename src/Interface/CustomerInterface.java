@@ -1,9 +1,10 @@
 package Interface;
 
 import java.io.IOException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface CustomerInterface {
+public interface CustomerInterface extends Remote {
 
     /**
      * Book Movie Tickets

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Created structure for cancelMovieTickets">
+    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Updated bookMovieTickets func">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/AdminInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/CustomerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/CustomerInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/MovieTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/MovieTicketService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -238,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675739505774</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Updated bookMovieTickets func">
+      <created>1675894215462</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1675894215462</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -269,7 +276,8 @@
     <MESSAGE value="Created structure for bookMovieTickets" />
     <MESSAGE value="Created structure for getBookingSchedule" />
     <MESSAGE value="Created structure for cancelMovieTickets" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created structure for cancelMovieTickets" />
+    <MESSAGE value="Updated bookMovieTickets func" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated bookMovieTickets func" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -286,7 +294,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
-          <line>219</line>
+          <line>223</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -296,13 +304,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
-          <line>195</line>
+          <line>197</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
           <line>139</line>
           <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Client/Client.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

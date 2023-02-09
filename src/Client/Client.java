@@ -125,33 +125,47 @@ public class Client extends Constant {
         }
         else {
             CustomerInterface customerRef = (CustomerInterface) Naming.lookup(serverPort);
+            while(true){
+                int option = Integer.parseInt(showCustomerMenu());
+                Scanner sc2 = new Scanner(System.in);
 
-            int option = Integer.parseInt(showCustomerMenu());
-            Scanner sc2 = new Scanner(System.in);
-
-            switch (option){
-                case 1:
-                    System.out.println("Please enter Movie ID");
-                    String bookMovieID = sc2.nextLine();
-                    System.out.println("Please enter Movie Name");
-                    String bookMovieName = sc2.nextLine();
-                    System.out.println("Please enter No of Tickets to Book");
-                    int bookNumberOfTickets = Integer.parseInt(sc2.nextLine());
-                    customerRef.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
-                    break;
-                case 2:
-                    customerRef.getBookingSchedule(userID);
-                    break;
-                case 3:
-                    System.out.println("Please enter Movie ID");
-                    String cancelBookMovieID = sc2.nextLine();
-                    System.out.println("Please enter Movie Name");
-                    String cancelBookMovieName = sc2.nextLine();
-                    System.out.println("Please enter No of Tickets to Book");
-                    int cancelBookNumberOfTickets = Integer.parseInt(sc2.nextLine());
-                    customerRef.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
-                    break;
+                switch (option){
+                    case 1:
+                    {
+                        System.out.println("Please enter Movie ID");
+                        String bookMovieID = sc2.nextLine();
+                        System.out.println("Please enter Movie Name");
+                        String bookMovieName = sc2.nextLine();
+                        System.out.println("Please enter No of Tickets to Book");
+                        int bookNumberOfTickets = Integer.parseInt(sc2.nextLine());
+                        customerRef.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
+                        break;
+                    }
+                    case 2:
+                    {
+                        String res = customerRef.getBookingSchedule(userID);
+                        System.out.println(res);
+                        break;
+                    }
+                    case 3:
+                    {
+                        System.out.println("Please enter Movie ID");
+                        String cancelBookMovieID = sc2.nextLine();
+                        System.out.println("Please enter Movie Name");
+                        String cancelBookMovieName = sc2.nextLine();
+                        System.out.println("Please enter No of Tickets to Book");
+                        int cancelBookNumberOfTickets = Integer.parseInt(sc2.nextLine());
+                        customerRef.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
+                        break;
+                    }
+                    case 4:{
+                        startProg();
+                        break;
+                    }
+                }
             }
+
+
         }
     }
 
@@ -197,7 +211,8 @@ public class Client extends Constant {
         System.out.println("Please select one of the following options: \n" +
                 "1. Book Movie Ticket\n" +
                 "2. Get Booking Schedule\n" +
-                "3. Cancel Movie Tickets\n");
+                "3. Cancel Movie Tickets\n" +
+                "4. Logout");
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         return input;

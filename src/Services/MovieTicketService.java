@@ -143,7 +143,9 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
 
         if(!userMap.isEmpty()){
             if(userMap.containsKey(userID)){
-                responseString = userMap.get(userID).keySet().toString();
+                for(var x : userMap.get(userID).entrySet()){
+                    responseString =  responseString + "Tickets booked for show at: " + x.getKey() + " for the movie: " + x.getValue() + "\n";
+                }
 
                 if(this.serverID.equals("atw")){
                     serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,outPort);
@@ -196,7 +198,9 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         String responseString = "";
         if(!userMap.isEmpty()){
             if(userMap.containsKey(userID)){
-                responseString = userMap.get(userID).keySet().toString();
+                for(var x : userMap.get(userID).entrySet()){
+                    responseString =  responseString + "Tickets booked for show at: " + x.getKey() + " for the movie: " + x.getValue() + "\n";
+                }
             }
         }
         return responseString;
