@@ -49,12 +49,12 @@ public class VERServer extends MovieTicketService {
                     }
                     case "bookMovieTickets": {
                         String res = verMovieService.bookMovieTickets(userID,movieID,movieName,noOfTickets);
-                        callbackResponse = requestStringArr + ";" + res;
+                        callbackResponse = res;
                         break;
                     }
                     case "getBookingSchedule": {
                         String res = verMovieService.getBookingScheduleUDP(userID);
-                        callbackResponse = requestStringArr + ";" + res;
+                        callbackResponse = res;
                         break;
                     }
                     case "cancelMovieTickets": {

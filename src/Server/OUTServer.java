@@ -62,12 +62,12 @@ public class OUTServer extends MovieTicketService {
                     }
                     case "bookMovieTickets": {
                         String res = outMovieService.bookMovieTickets(userID,movieID,movieName,noOfTickets);
-                        callbackResponse = requestStringArr + ";" + res;
+                        callbackResponse = res;
                         break;
                     }
                     case "getBookingSchedule": {
                         String res = outMovieService.getBookingScheduleUDP(userID);
-                        callbackResponse = requestStringArr + ";" + res;
+                        callbackResponse = res;
                         break;
                     }
                     case "cancelMovieTickets": {

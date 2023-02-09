@@ -126,14 +126,13 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
                                     serverResponse = "Tickets Booking Updated.";
                                 }
                                 else {
-//                                    TODO: IMPROVE THIS CODE
                                     HashMap<String,Integer> temp = new HashMap<>();
                                     for (var x : userMap.get(userID).get(movieName).entrySet()) {
                                         temp.put(x.getKey(), x.getValue());
                                     }
                                     temp.put(movieID,noOfTickets);
                                     userMap.get(userID).put(movieName,temp);
-                                    movieMap.get(movieName).put(movieName,capacity - noOfTickets);
+                                    movieMap.get(movieName).put(movieID,capacity - noOfTickets);
                                     serverResponse = "Tickets Booked.";
                                 }
                             }

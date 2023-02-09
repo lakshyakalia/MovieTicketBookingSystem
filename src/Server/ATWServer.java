@@ -52,12 +52,12 @@ public class ATWServer extends MovieTicketService {
                     }
                     case "bookMovieTickets": {
                         String res = atwMovieService.bookMovieTickets(userID,movieID,movieName,noOfTickets);
-                        callbackResponse = requestStringArr + ";" + res;
+                        callbackResponse = res;
                         break;
                     }
                     case "getBookingSchedule": {
                         String res = atwMovieService.getBookingScheduleUDP(userID);
-                        callbackResponse = requestStringArr + ";" + res;
+                        callbackResponse = res;
                         break;
                     }
                     case "cancelMovieTickets": {
