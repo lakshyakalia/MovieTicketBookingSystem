@@ -54,7 +54,7 @@ public class Client extends Constant {
                         System.out.println("Please enter Booking Capacity");
                         int addBookingCapacity = Integer.parseInt(sc2.nextLine());
 
-                        int res = adminRef.addMovieSlots(addMovieID, addMovieName, addBookingCapacity);
+                        String res = adminRef.addMovieSlots(addMovieID, addMovieName, addBookingCapacity);
                         System.out.println(res);
                         break;
                     }
