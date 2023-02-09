@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Updated delete movie tickets prompt and response object">
+    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Added condition so user cannot book more than 3 ticket in other server">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/MovieTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/MovieTicketService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -353,7 +352,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675972797827</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Added condition so user cannot book more than 3 ticket in other server">
+      <created>1675980540124</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1675980540124</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -368,7 +374,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add movie slots functionality for admin in-progress" />
     <MESSAGE value="Handled condition for admin adding movie slots for his domain server" />
     <MESSAGE value="Updated UI and return type for addBookingSlot" />
     <MESSAGE value="UDP connection for listMovieShowAvailability in progress" />
@@ -393,7 +398,8 @@
     <MESSAGE value="Updated bookMovieTicket" />
     <MESSAGE value="Updated getBooking Schedule and cancelMovieTicket funcs" />
     <MESSAGE value="Updated delete movie tickets prompt and response object" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated delete movie tickets prompt and response object" />
+    <MESSAGE value="Added condition so user cannot book more than 3 ticket in other server" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added condition so user cannot book more than 3 ticket in other server" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
