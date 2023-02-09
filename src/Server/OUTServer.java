@@ -57,7 +57,7 @@ public class OUTServer extends MovieTicketService {
                 switch (func) {
                     case "listMovieShowAvailability": {
                         String res = outMovieService.listMovieShowAvailabilityUDP(movieName);
-                        callbackResponse = requestStringArr + ";" + res;
+                        callbackResponse = res;
                         break;
                     }
                     case "bookMovieTickets": {

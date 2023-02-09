@@ -44,7 +44,7 @@ public class VERServer extends MovieTicketService {
                 switch (func) {
                     case "listMovieShowAvailability": {
                         String res = verMovieService.listMovieShowAvailabilityUDP(movieName);
-                        callbackResponse = requestStringArr + ";" + res;
+                        callbackResponse = res;
                         break;
                     }
                     case "bookMovieTickets": {

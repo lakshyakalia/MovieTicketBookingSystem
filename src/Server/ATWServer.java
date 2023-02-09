@@ -47,7 +47,7 @@ public class ATWServer extends MovieTicketService {
                 switch (func) {
                     case "listMovieShowAvailability": {
                         String res = atwMovieService.listMovieShowAvailabilityUDP(movieName);
-                        callbackResponse = requestStringArr + ";" + res;
+                        callbackResponse = res;
                         break;
                     }
                     case "bookMovieTickets": {
