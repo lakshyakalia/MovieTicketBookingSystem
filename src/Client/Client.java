@@ -76,7 +76,7 @@ public class Client extends Constant {
                             }
                         }
 
-                        int res = adminRef.removeMovieSlots(removeMovieID, removeMovieName);
+                        String res = adminRef.removeMovieSlots(removeMovieID, removeMovieName);
                         System.out.println(res);
                         break;
                     }

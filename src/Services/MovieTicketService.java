@@ -58,13 +58,20 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
             return HTTP_CREATED;
         }
     }
-    public int removeMovieSlots(String movieID, String movieName){
-        movieMap.get(movieName).remove(movieID);
-        /**
-         * TODO: Shift customer with existing movie slot
-         * TODO: to the next available movie show
-         */
-        return HTTP_OK;
+    public String removeMovieSlots(String movieID, String movieName){
+        String responseString = "";
+        if(!movieMap.isEmpty() && movieMap.containsKey(movieName) && movieMap.get(movieName).containsKey(movieID)){
+            movieMap.get(movieName).remove(movieID);
+            responseString = "Movie slot deleted.";
+            /**
+             * TODO: Shift customer with existing movie slot
+             * TODO: to the next available movie show
+             */
+        }
+        else {
+            responseString = "Movie slot does not exists.";
+        }
+        return responseString;
     }
     public String listMovieShowAvailability(String movieName) throws IOException {
         String serverOneResponse = "";
