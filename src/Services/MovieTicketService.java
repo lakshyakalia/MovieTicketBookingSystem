@@ -22,6 +22,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
 //    MovieName > MovieID : BookingCapacity
     public HashMap<String, HashMap<String, Integer>> movieMap = new HashMap<>();
 //    UserID > MovieName > MovieID : noOfTickets
+//    TODO: Correct the hashmap
     public HashMap<String, HashMap<String, HashMap<String, Integer>>> userMap = new HashMap<>();
     DatagramSocket dss;
     String serverID = "";

@@ -67,7 +67,7 @@ public class ATWServer extends MovieTicketService {
                     }
                 }
 //                byte[] byteToSend = callbackResponse.trim().getBytes();
-                byte[] byteToSend = "Send Message".getBytes();
+                byte[] byteToSend = callbackResponse.getBytes();
                 InetAddress ia = InetAddress.getLocalHost();
                 DatagramPacket response = new DatagramPacket(byteToSend, byteToSend.length, ia,
                         dp.getPort());
