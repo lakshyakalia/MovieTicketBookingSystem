@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Duplicate showtimes are now working for different movies">
+    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Updated response object for listMovieShowAvailability for all servers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ATWServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ATWServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/OUTServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/OUTServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/VERServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/VERServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/MovieTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/MovieTicketService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -320,7 +318,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675962802939</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Updated response object for listMovieShowAvailability for all servers">
+      <created>1675963693357</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1675963693357</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -335,7 +340,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created and tested a test function for the integrity of RMI code" />
     <MESSAGE value="Created menu for Admin input in Client file" />
     <MESSAGE value="Updated the Client file Menu functions for admin" />
     <MESSAGE value="Updated the Client file Menu functions for customer" />
@@ -360,7 +364,8 @@
     <MESSAGE value="Updated removeMovieSlot func" />
     <MESSAGE value="Minor code improvements" />
     <MESSAGE value="Duplicate showtimes are now working for different movies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Duplicate showtimes are now working for different movies" />
+    <MESSAGE value="Updated response object for listMovieShowAvailability for all servers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated response object for listMovieShowAvailability for all servers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -382,7 +387,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
-          <line>254</line>
+          <line>273</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

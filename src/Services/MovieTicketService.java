@@ -118,30 +118,49 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
                     int capacity = movieMap.get(movieName).get(movieID);
                     if(capacity >= noOfTickets){
                         if(userMap.containsKey(userID)){
-                            if(userMap.get(userID).containsKey(movieID)){
-                                if(userMap.get(userID).get(movieID).containsKey(movieName)){
-                                    int oldNoOfTickets = userMap.get(userID).get(movieID).get(movieName);
-                                    userMap.get(userID).get(movieID).put(movieName,oldNoOfTickets + noOfTickets);
-                                    movieMap.get(movieName).put(movieName,capacity - noOfTickets);
+                            if(userMap.get(userID).containsKey(movieName)){
+                                if(userMap.get(userID).get(movieName).containsKey(movieID)){
+                                    int oldNoOfTickets = userMap.get(userID).get(movieName).get(movieID);
+                                    userMap.get(userID).get(movieName).put(movieID,oldNoOfTickets + noOfTickets);
+                                    movieMap.get(movieName).put(movieID,capacity - noOfTickets);
                                     serverResponse = "Tickets Booking Updated.";
                                 }
                                 else {
-                                    userMap.get(userID).get(movieID).put(movieName,noOfTickets);
+//                                    TODO: IMPROVE THIS CODE
+                                    HashMap<String,Integer> temp = new HashMap<>();
+                                    for (var x : userMap.get(userID).get(movieName).entrySet()) {
+                                        temp.put(x.getKey(), x.getValue());
+                                    }
+                                    temp.put(movieID,noOfTickets);
+                                    userMap.get(userID).put(movieName,temp);
                                     movieMap.get(movieName).put(movieName,capacity - noOfTickets);
                                     serverResponse = "Tickets Booked.";
                                 }
                             }
                             else {
-                                userMap.get(userID).put(movieID,new HashMap<String,Integer>());
-                                userMap.get(userID).get(movieID).put(movieName,noOfTickets);
-                                movieMap.get(movieName).put(movieName,capacity - noOfTickets);
+                                HashMap<String,Integer> subTemp = new HashMap<>();
+                                subTemp.put(movieID,noOfTickets);
+                                HashMap<String, HashMap<String, Integer>> temp = new HashMap<>();
+                                temp.put(movieName,subTemp);
+                                userMap.put(userID,temp);
+
+//                            userMap.get(userID).put(movieID, new HashMap<String, Integer>());
+//                            userMap.get(userID).get(movieID).put(movieName,noOfTickets);
+
+                                movieMap.get(movieName).put(movieID,capacity - noOfTickets);
                                 serverResponse = "Tickets Booked.";
                             }
                         }
                         else{
-                            userMap.put(userID,new HashMap<String, HashMap<String, Integer>>());
-                            userMap.get(userID).put(movieID, new HashMap<String, Integer>());
-                            userMap.get(userID).get(movieID).put(movieName,noOfTickets);
+                            HashMap<String,Integer> subTemp = new HashMap<>();
+                            subTemp.put(movieID,noOfTickets);
+                            HashMap<String, HashMap<String, Integer>> temp = new HashMap<>();
+                            temp.put(movieName,subTemp);
+                            userMap.put(userID,temp);
+
+//                            userMap.get(userID).put(movieID, new HashMap<String, Integer>());
+//                            userMap.get(userID).get(movieID).put(movieName,noOfTickets);
+
                             movieMap.get(movieName).put(movieID,capacity - noOfTickets);
                             serverResponse = "Tickets Booked.";
                         }
