@@ -62,7 +62,7 @@ public class ATWServer extends MovieTicketService {
                     }
                     case "cancelMovieTickets": {
                         String res = atwMovieService.cancelMovieTickets(userID,movieID,movieName,noOfTickets);
-                        callbackResponse = requestStringArr + ";" + res;
+                        callbackResponse = res;
                         break;
                     }
                 }

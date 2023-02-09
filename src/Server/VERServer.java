@@ -59,7 +59,7 @@ public class VERServer extends MovieTicketService {
                     }
                     case "cancelMovieTickets": {
                         String res = verMovieService.cancelMovieTickets(userID,movieID,movieName,noOfTickets);
-                        callbackResponse = requestStringArr + ";" + res;
+                        callbackResponse = res;
                         break;
                     }
                 }

@@ -72,7 +72,7 @@ public class OUTServer extends MovieTicketService {
                     }
                     case "cancelMovieTickets": {
                         String res = outMovieService.cancelMovieTickets(userID,movieID,movieName,noOfTickets);
-                        callbackResponse = requestStringArr + ";" + res;
+                        callbackResponse = res;
                         break;
                     }
                 }
