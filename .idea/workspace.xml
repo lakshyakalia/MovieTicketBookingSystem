@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Updated getBooking Schedule and cancelMovieTicket funcs">
+    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Updated delete movie tickets prompt and response object">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ATWServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ATWServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/OUTServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/OUTServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/VERServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/VERServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/MovieTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/MovieTicketService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -349,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675972239032</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Updated delete movie tickets prompt and response object">
+      <created>1675972797827</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1675972797827</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -364,7 +368,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Tested end to end client and server communication using RMI" />
     <MESSAGE value="Add movie slots functionality for admin in-progress" />
     <MESSAGE value="Handled condition for admin adding movie slots for his domain server" />
     <MESSAGE value="Updated UI and return type for addBookingSlot" />
@@ -389,7 +392,8 @@
     <MESSAGE value="Updated bookMovieTicket to support multiple bookings for a single user" />
     <MESSAGE value="Updated bookMovieTicket" />
     <MESSAGE value="Updated getBooking Schedule and cancelMovieTicket funcs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated getBooking Schedule and cancelMovieTicket funcs" />
+    <MESSAGE value="Updated delete movie tickets prompt and response object" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated delete movie tickets prompt and response object" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -403,11 +407,6 @@
           <url>file://$PROJECT_DIR$/src/Server/ATWServer.java</url>
           <line>44</line>
           <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Server/VERServer.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>

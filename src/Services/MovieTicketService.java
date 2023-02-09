@@ -112,7 +112,15 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         String targetServer = movieID.substring(0,3).toLowerCase();
         String serverResponse = "";
 
-        if(this.serverID.equals(targetServer)){
+        String userTargetServer = userID.substring(0,3).toLowerCase();
+        boolean flag = false;
+        if(!userTargetServer.equals(targetServer) && noOfTickets > 3){
+            flag = true;
+        }
+        if(flag){
+            serverResponse = "Cannot book more than 3 ticket in other server";
+        }
+        else if(this.serverID.equals(targetServer)){
             if(movieMap.containsKey(movieName)){
                 if(movieMap.get(movieName).containsKey(movieID)){
                     int capacity = movieMap.get(movieName).get(movieID);
