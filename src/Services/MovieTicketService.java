@@ -96,9 +96,17 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
                     if(capacity >= noOfTickets){
                         if(userMap.containsKey(userID)){
                             if(userMap.get(userID).containsKey(movieID)){
-                                userMap.get(userID).get(movieID).put(movieName,noOfTickets);
-                                movieMap.get(movieName).put(movieName,capacity - noOfTickets);
-                                serverResponse = "Tickets Booked.";
+                                if(userMap.get(userID).get(movieID).containsKey(movieName)){
+                                    int oldNoOfTickets = userMap.get(userID).get(movieID).get(movieName);
+                                    userMap.get(userID).get(movieID).put(movieName,oldNoOfTickets + noOfTickets);
+                                    movieMap.get(movieName).put(movieName,capacity - noOfTickets);
+                                    serverResponse = "Tickets Booking Updated.";
+                                }
+                                else {
+                                    userMap.get(userID).get(movieID).put(movieName,noOfTickets);
+                                    movieMap.get(movieName).put(movieName,capacity - noOfTickets);
+                                    serverResponse = "Tickets Booked.";
+                                }
                             }
                             else {
                                 userMap.get(userID).put(movieID,new HashMap<String,Integer>());
@@ -111,7 +119,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
                             userMap.put(userID,new HashMap<String, HashMap<String, Integer>>());
                             userMap.get(userID).put(movieID, new HashMap<String, Integer>());
                             userMap.get(userID).get(movieID).put(movieName,noOfTickets);
-                            movieMap.get(movieName).put(movieName,capacity - noOfTickets);
+                            movieMap.get(movieName).put(movieID,capacity - noOfTickets);
                             serverResponse = "Tickets Booked.";
                         }
                     }
@@ -166,31 +174,54 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         }
         return responseString;
     }
-    public String cancelMovieTickets(String userID, String movieID, String movieName, int noOfTickets) throws IOException {
+    public String cancelMovieTickets(String userID, String movieID, String movieName, int noOfTicketsToCancel) throws IOException {
         String targetServer = movieID.substring(0,3).toLowerCase();
         String serverResponse = "";
 
         if(this.serverID.equals(targetServer)){
-            if(movieMap.get(movieName).get(movieID) == noOfTickets){
-//                TODO: Remove movieID instead of userID
-                userMap.remove(userID);
-            }else {
-                userMap.get(userID).get(movieID).put(movieName,noOfTickets);
-                return "201";
+            if(movieMap.containsKey(movieName)){
+                if(movieMap.get(movieName).containsKey(movieID)){
+                    if(userMap.containsKey(userID) &&  userMap.get(userID).containsKey(movieID) && userMap.get(userID).get(movieID).containsKey(movieName)){
+                        int ticketsBooked = userMap.get(userID).get(movieID).get(movieName);
+                        if(noOfTicketsToCancel <= ticketsBooked){
+                            if(noOfTicketsToCancel < ticketsBooked){
+                                userMap.get(userID).get(movieID).put(movieName,ticketsBooked - noOfTicketsToCancel);
+                                int capacity = movieMap.get(movieName).get(movieID);
+                                movieMap.get(movieName).put(movieName,capacity + noOfTicketsToCancel);
+                                serverResponse = "Tickets successfully cancelled!";
+                            }
+                            else {
+                                userMap.get(userID).get(movieID).remove(movieName);
+                                int capacity = movieMap.get(movieName).get(movieID);
+                                movieMap.get(movieName).put(movieName,capacity + noOfTicketsToCancel);
+                                serverResponse = "Tickets successfully cancelled!";
+                            }
+                        }
+                        else {
+                            serverResponse = "No. of tickets to cancel is more than booked tickets";
+                        }
+                    }
+                    else {
+                        serverResponse = "No booking found for user.";
+                    }
+                }
+                else {
+                    serverResponse = "No movie show found.";
+                }
+            }
+            else {
+                serverResponse = "No movie found.";
             }
         } else if (targetServer.equals("atw")) {
-            serverResponse = sendMsgToServer("cancelMovieTickets",userID,movieName,movieID,noOfTickets,atwPort);
+            serverResponse = sendMsgToServer("cancelMovieTickets",userID,movieName,movieID,noOfTicketsToCancel,atwPort);
         } else if (targetServer.equals("out")) {
-            serverResponse = sendMsgToServer("cancelMovieTickets",userID,movieName,movieID,noOfTickets,outPort);
+            serverResponse = sendMsgToServer("cancelMovieTickets",userID,movieName,movieID,noOfTicketsToCancel,outPort);
         } else if (targetServer.equals("ver")) {
-            serverResponse = sendMsgToServer("cancelMovieTickets",userID,movieName,movieID,noOfTickets,verPort);
+            serverResponse = sendMsgToServer("cancelMovieTickets",userID,movieName,movieID,noOfTicketsToCancel,verPort);
         }
         return serverResponse;
-//        return null;
     }
-//    public void test(){
-//        System.out.println("Helloooo");
-//    }
+
     public String listMovieShowAvailabilityUDP(String movieName) {
         return movieMap.get(movieName).keySet().toString();
     }
