@@ -156,7 +156,8 @@ public class Client extends Constant {
                         String cancelBookMovieName = sc2.nextLine();
                         System.out.println("Please enter No of Tickets to Book");
                         int cancelBookNumberOfTickets = Integer.parseInt(sc2.nextLine());
-                        customerRef.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
+                        String res = customerRef.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
+                        System.out.println(res);
                         break;
                     }
                     case 4:{
