@@ -193,7 +193,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         if(!userMap.isEmpty()) {
             if (userMap.containsKey(userID)) {
                 for (var x : userMap.get(userID).entrySet()) {
-                    responseString = responseString + "Tickets booked for show at: " + x.getKey() + " for the movie: " + x.getValue() + "\n";
+                    responseString = responseString + "Tickets booked for movie: " + x.getKey() + " at: " + x.getValue() + "\n";
                 }
             }
         }
@@ -219,19 +219,19 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         if(this.serverID.equals(targetServer)){
             if(movieMap.containsKey(movieName)){
                 if(movieMap.get(movieName).containsKey(movieID)){
-                    if(userMap.containsKey(userID) &&  userMap.get(userID).containsKey(movieID) && userMap.get(userID).get(movieID).containsKey(movieName)){
-                        int ticketsBooked = userMap.get(userID).get(movieID).get(movieName);
+                    if(userMap.containsKey(userID) &&  userMap.get(userID).containsKey(movieName) && userMap.get(userID).get(movieName).containsKey(movieID)){
+                        int ticketsBooked = userMap.get(userID).get(movieName).get(movieID);
                         if(noOfTicketsToCancel <= ticketsBooked){
                             if(noOfTicketsToCancel < ticketsBooked){
-                                userMap.get(userID).get(movieID).put(movieName,ticketsBooked - noOfTicketsToCancel);
+                                userMap.get(userID).get(movieName).put(movieID,ticketsBooked - noOfTicketsToCancel);
                                 int capacity = movieMap.get(movieName).get(movieID);
-                                movieMap.get(movieName).put(movieName,capacity + noOfTicketsToCancel);
+                                movieMap.get(movieName).put(movieID,capacity + noOfTicketsToCancel);
                                 serverResponse = "Tickets successfully cancelled!";
                             }
                             else {
-                                userMap.get(userID).get(movieID).remove(movieName);
+                                userMap.get(userID).get(movieName).remove(movieID);
                                 int capacity = movieMap.get(movieName).get(movieID);
-                                movieMap.get(movieName).put(movieName,capacity + noOfTicketsToCancel);
+                                movieMap.get(movieName).put(movieID,capacity + noOfTicketsToCancel);
                                 serverResponse = "Tickets successfully cancelled!";
                             }
                         }
@@ -274,7 +274,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         if(!userMap.isEmpty()){
             if(userMap.containsKey(userID)){
                 for(var x : userMap.get(userID).entrySet()){
-                    responseString =  responseString + "Tickets booked for show at: " + x.getKey() + " for the movie: " + x.getValue() + "\n";
+                    responseString = responseString + "Tickets booked for movie: " + x.getKey() + " at: " + x.getValue() + "\n";
                 }
             }
         }
