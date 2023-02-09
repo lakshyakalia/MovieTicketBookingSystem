@@ -65,23 +65,29 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         String serverOneResponse = "";
         String serverTwoResponse = "";
 
+        String responseString = "";
 
-        String responseString = movieMap.get(movieName).keySet().toString();
-
-
-        if(this.serverID.equals("atw")){
-            serverOneResponse = sendMsgToServer("listMovieShowAvailability",null,movieName,null,0,outPort);
-            serverTwoResponse = sendMsgToServer("listMovieShowAvailability",null,movieName,null,0,verPort);
-        } else if(this.serverID.equals("out")){
-            serverOneResponse = sendMsgToServer("listMovieShowAvailability",null,movieName,null,0,atwPort);
-            System.out.println(serverOneResponse);
-            serverTwoResponse = sendMsgToServer("listMovieShowAvailability",null,movieName,null,0,verPort);
-        } else if (this.serverID.equals("ver")) {
-            serverOneResponse = sendMsgToServer("listMovieShowAvailability",null,movieName,null,0,atwPort);
-            serverTwoResponse = sendMsgToServer("listMovieShowAvailability",null,movieName,null,0,outPort);
+        if(!movieMap.isEmpty()){
+            if(movieMap.containsKey(movieName)) {
+                for (var x : movieMap.get(movieName).entrySet()) {
+                    responseString = responseString + "Movie Show: " + x.getKey() + " Capacity: " + x.getValue() + "\n";
+                }
+            }
         }
+
+        if (this.serverID.equals("atw")) {
+            serverOneResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, outPort);
+            serverTwoResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, verPort);
+        } else if (this.serverID.equals("out")) {
+            serverOneResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, atwPort);
+            System.out.println(serverOneResponse);
+            serverTwoResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, verPort);
+        } else if (this.serverID.equals("ver")) {
+            serverOneResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, atwPort);
+            serverTwoResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, outPort);
+        }
+
         responseString = responseString + "\n" + serverOneResponse + "\n" + serverTwoResponse;
-//        listShows.add(serverTwoResponse);
         return responseString;
     }
 
@@ -149,29 +155,26 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         String serverTwoResponse = "";
         String responseString = "";
 
-        if(!userMap.isEmpty()){
-            if(userMap.containsKey(userID)){
-                for(var x : userMap.get(userID).entrySet()){
-                    responseString =  responseString + "Tickets booked for show at: " + x.getKey() + " for the movie: " + x.getValue() + "\n";
+        if(!userMap.isEmpty()) {
+            if (userMap.containsKey(userID)) {
+                for (var x : userMap.get(userID).entrySet()) {
+                    responseString = responseString + "Tickets booked for show at: " + x.getKey() + " for the movie: " + x.getValue() + "\n";
                 }
-
-                if(this.serverID.equals("atw")){
-                    serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,outPort);
-                    serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,verPort);
-                } else if(this.serverID.equals("out")){
-                    serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,atwPort);
-                    System.out.println(serverOneResponse);
-                    serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,verPort);
-                } else if (this.serverID.equals("ver")) {
-                    serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,atwPort);
-                    serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,outPort);
-                }
-                responseString = responseString + "\n" + serverOneResponse + "\n" + serverTwoResponse;
             }
         }
-        else {
-            responseString = "No bookings found.";
+
+        if(this.serverID.equals("atw")){
+            serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,outPort);
+            serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,verPort);
+        } else if(this.serverID.equals("out")){
+            serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,atwPort);
+            System.out.println(serverOneResponse);
+            serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,verPort);
+        } else if (this.serverID.equals("ver")) {
+            serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,atwPort);
+            serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,outPort);
         }
+        responseString = responseString + "\n" + serverOneResponse + "\n" + serverTwoResponse;
         return responseString;
     }
     public String cancelMovieTickets(String userID, String movieID, String movieName, int noOfTicketsToCancel) throws IOException {
@@ -223,7 +226,13 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
     }
 
     public String listMovieShowAvailabilityUDP(String movieName) {
-        return movieMap.get(movieName).keySet().toString();
+        String responseString = "";
+        if(movieMap.containsKey(movieName)){
+            for(var x: movieMap.get(movieName).entrySet()){
+                responseString = responseString + "Movie Show: " + x.getKey() + " Capacity: " + x.getValue() + "\n";
+            }
+        }
+        return responseString;
     }
     public String getBookingScheduleUDP(String userID){
         String responseString = "";
