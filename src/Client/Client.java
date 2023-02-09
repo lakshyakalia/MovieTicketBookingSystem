@@ -138,7 +138,8 @@ public class Client extends Constant {
                         String bookMovieName = sc2.nextLine();
                         System.out.println("Please enter No of Tickets to Book");
                         int bookNumberOfTickets = Integer.parseInt(sc2.nextLine());
-                        customerRef.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
+                        String res = customerRef.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
+                        System.out.println(res.split(";")[res.split(";").length-1]);
                         break;
                     }
                     case 2:

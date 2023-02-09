@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Updated bookMovieTickets func">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Updated getBookingSchedule func">
       <change beforePath="$PROJECT_DIR$/src/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/CustomerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/CustomerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/MovieTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/MovieTicketService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675894215462</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Updated getBookingSchedule func">
+      <created>1675902203150</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1675902203150</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -277,7 +281,8 @@
     <MESSAGE value="Created structure for getBookingSchedule" />
     <MESSAGE value="Created structure for cancelMovieTickets" />
     <MESSAGE value="Updated bookMovieTickets func" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated bookMovieTickets func" />
+    <MESSAGE value="Updated getBookingSchedule func" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated getBookingSchedule func" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
