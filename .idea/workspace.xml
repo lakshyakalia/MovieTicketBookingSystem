@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Updated cancelMovieTickets func">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Updated listMovieShowAvailability func">
       <change beforePath="$PROJECT_DIR$/src/Services/MovieTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/MovieTicketService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -271,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675904640940</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Updated listMovieShowAvailability func">
+      <created>1675905452121</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1675905452121</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -307,7 +313,8 @@
     <MESSAGE value="Modified customer input structure in client file" />
     <MESSAGE value="Modified customer input structure for delete in client file" />
     <MESSAGE value="Updated cancelMovieTickets func" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated cancelMovieTickets func" />
+    <MESSAGE value="Updated listMovieShowAvailability func" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated listMovieShowAvailability func" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -323,24 +330,14 @@
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
-          <line>263</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/VERServer.java</url>
           <line>43</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
-          <line>237</line>
+          <line>242</line>
           <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
-          <line>153</line>
-          <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Client/Client.java</url>
