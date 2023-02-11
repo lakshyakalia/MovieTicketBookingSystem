@@ -16,7 +16,7 @@ public class OUTServer extends MovieTicketService {
     public static void main(String[] args) throws Exception {
 //        DatagramSocket ds = new DatagramSocket(4557);
 
-        MovieTicketService outMovieService = new MovieTicketService("out","OUTREMONT");
+        MovieTicketService outMovieService = new MovieTicketService("out","OUT");
         Naming.bind("rmi://localhost/out", outMovieService);
         System.out.println("OUT Server started...");
 

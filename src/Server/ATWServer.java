@@ -18,7 +18,7 @@ public class ATWServer extends MovieTicketService {
     public static void main(String[] args) throws Exception {
         DatagramSocket ds = new DatagramSocket(4556);
 
-        MovieTicketService atwMovieService = new MovieTicketService("atw","ATWATER");
+        MovieTicketService atwMovieService = new MovieTicketService("atw","ATW");
         Naming.bind("rmi://localhost/atw", atwMovieService);
         System.out.println("ATW Server started...");
 

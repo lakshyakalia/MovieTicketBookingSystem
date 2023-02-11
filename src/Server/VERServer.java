@@ -16,7 +16,7 @@ public class VERServer extends MovieTicketService {
     public static void main(String[] args) throws Exception {
 //        DatagramSocket ds = new DatagramSocket(4558);
 
-        MovieTicketService verMovieService = new MovieTicketService("ver","VERMONT");
+        MovieTicketService verMovieService = new MovieTicketService("ver","VER");
         Naming.bind("rmi://localhost/ver", verMovieService);
         System.out.println("VER Server started...");
 
