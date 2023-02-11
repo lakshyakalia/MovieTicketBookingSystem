@@ -8,9 +8,9 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.rmi.*;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import Interface.AdminInterface;
 import Interface.CustomerInterface;
@@ -22,7 +22,6 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
 //    MovieName > MovieID : BookingCapacity
     public HashMap<String, HashMap<String, Integer>> movieMap = new HashMap<>();
 //    UserID > MovieName > MovieID : noOfTickets
-//    TODO: Correct the hashmap
     public HashMap<String, HashMap<String, HashMap<String, Integer>>> userMap = new HashMap<>();
     DatagramSocket dss;
     String serverID = "";
@@ -66,6 +65,16 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
     public String removeMovieSlots(String movieID, String movieName){
         String responseString = "";
         if(!movieMap.isEmpty() && movieMap.containsKey(movieName) && movieMap.get(movieName).containsKey(movieID)){
+
+//            ArrayList dateList = new ArrayList();
+//            for (var x : movieMap.get(movieName).entrySet()) {
+//                dateList.add(x.getKey().substring(3));
+//            }
+//            ArrayList sortedDateList = sortDates(dateList);
+//            int index = sortedDateList.indexOf(movieID.substring(3));
+//            String updatedMovieID = (String) sortedDateList.get(index);
+//            bookMovieTickets();
+
             movieMap.get(movieName).remove(movieID);
             responseString = "Movie slot deleted.";
             /**
@@ -97,7 +106,6 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
             serverTwoResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, verPort);
         } else if (this.serverID.equals("out")) {
             serverOneResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, atwPort);
-            System.out.println(serverOneResponse);
             serverTwoResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, verPort);
         } else if (this.serverID.equals("ver")) {
             serverOneResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, atwPort);
@@ -211,7 +219,6 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
             serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,verPort);
         } else if(this.serverID.equals("out")){
             serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,atwPort);
-            System.out.println(serverOneResponse);
             serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,verPort);
         } else if (this.serverID.equals("ver")) {
             serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,atwPort);
