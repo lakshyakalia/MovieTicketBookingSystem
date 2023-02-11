@@ -244,8 +244,6 @@ public class Client extends Constant {
     }
     public static void writeToLogFile(String operation, String params, String response) {
         try {
-            System.out.println("hello");
-
             FileWriter myWriter = new FileWriter("C:\\Users\\laksh\\Intellij-workspace\\MovieTicketsBookingSystem\\src\\Logs\\"+currentUser+".txt",true);
             DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
             String log = dateFormat.format(LocalDateTime.now()) + " : " + operation + " : " + params + " : "
