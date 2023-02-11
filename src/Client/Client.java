@@ -4,13 +4,18 @@ import Constants.Constant;
 import Interface.AdminInterface;
 import Interface.CustomerInterface;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Client extends Constant {
+    public static String currentUser;
+    public static String log;
     public static void main(String[] args) throws Exception {
         startProg();
     }
@@ -21,6 +26,7 @@ public class Client extends Constant {
 
         boolean isAdmin = checkAdmin(userID);
         String serverPort = getServerPort(userID);
+        currentUser = userID;
 
         if(isAdmin){
             AdminInterface adminRef = (AdminInterface) Naming.lookup(serverPort);
@@ -53,8 +59,9 @@ public class Client extends Constant {
                         String addMovieName = sc2.nextLine();
                         System.out.println("Please enter Booking Capacity");
                         int addBookingCapacity = Integer.parseInt(sc2.nextLine());
-
+                        log="Add Movie Slots";
                         String res = adminRef.addMovieSlots(addMovieID, addMovieName, addBookingCapacity);
+                        writeToLogFile("addMovieSlots",userID+" "+addMovieID+" "+addMovieName+" "+addBookingCapacity,res);
                         System.out.println(res);
                         break;
                     }
@@ -76,14 +83,18 @@ public class Client extends Constant {
                             }
                         }
 
+                        log="Remove Movie Slots";
                         String res = adminRef.removeMovieSlots(removeMovieID, removeMovieName);
+                        writeToLogFile("removeMovieSlots",userID+" "+removeMovieID+" "+removeMovieName,res);
                         System.out.println(res);
                         break;
                     }
                     case 3:{
                         System.out.println("Please enter Movie Name");
                         String listMovieName = sc2.nextLine();
+                        log="List Movie Show Availability";
                         String res = adminRef.listMovieShowAvailability(listMovieName);
+                        writeToLogFile("listMovieShowsAvailability",userID+" "+listMovieName,res);
                         System.out.println(res);
                         break;
                     }
@@ -94,12 +105,16 @@ public class Client extends Constant {
                         String bookMovieName = sc2.nextLine();
                         System.out.println("Please enter No of Tickets to Book");
                         int bookNumberOfTickets = Integer.parseInt(sc2.nextLine());
+                        log="Book Movie Tickets";
                         String res = adminRef.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
+                        writeToLogFile("bookMovieTickets",userID+" "+bookMovieID+" "+bookMovieName+" "+bookNumberOfTickets,res);
                         System.out.println(res.split(";")[res.split(";").length-1]);
                         break;
                     }
                     case 5:{
+                        log="Get Booking Done by user";
                         String res = adminRef.getBookingSchedule(userID);
+                        writeToLogFile("getBookingSchedule",userID,res);
                         System.out.println(res);
                         break;
                     }
@@ -110,7 +125,9 @@ public class Client extends Constant {
                         String cancelBookMovieName = sc2.nextLine();
                         System.out.println("Please enter No of Tickets to Cancel");
                         int cancelBookNumberOfTickets = Integer.parseInt(sc2.nextLine());
+                        log="Tickets Cancelled.";
                         String res = adminRef.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
+                        writeToLogFile("cancelMovieTickets",userID+" "+cancelBookMovieID+" "+cancelBookMovieName+" "+cancelBookNumberOfTickets,res);
                         System.out.println(res);
                         break;
                     }
@@ -138,13 +155,17 @@ public class Client extends Constant {
                         String bookMovieName = sc2.nextLine();
                         System.out.println("Please enter No of Tickets to Book");
                         int bookNumberOfTickets = Integer.parseInt(sc2.nextLine());
+                        log="Book Movie Tickets";
                         String res = customerRef.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
+                        writeToLogFile("bookMovieTickets",userID+" "+bookMovieID+" "+bookMovieName+" "+bookNumberOfTickets,res);
                         System.out.println(res.split(";")[res.split(";").length-1]);
                         break;
                     }
                     case 2:
                     {
+                        log="Get Booking Done by user";
                         String res = customerRef.getBookingSchedule(userID);
+                        writeToLogFile("getBookingSchedule",userID,res);
                         System.out.println(res);
                         break;
                     }
@@ -156,7 +177,9 @@ public class Client extends Constant {
                         String cancelBookMovieName = sc2.nextLine();
                         System.out.println("Please enter No of Tickets to Cancel");
                         int cancelBookNumberOfTickets = Integer.parseInt(sc2.nextLine());
+                        log="Tickets Cancelled.";
                         String res = customerRef.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
+                        writeToLogFile("cancelMovieTickets",userID+" "+cancelBookMovieID+" "+cancelBookMovieName+" "+cancelBookNumberOfTickets,res);
                         System.out.println(res);
                         break;
                     }
@@ -218,5 +241,19 @@ public class Client extends Constant {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         return input;
+    }
+    public static void writeToLogFile(String operation, String params, String response) {
+        try {
+            System.out.println("hello");
+
+            FileWriter myWriter = new FileWriter("C:\\Users\\laksh\\Intellij-workspace\\MovieTicketsBookingSystem\\src\\Logs\\"+currentUser+".txt",true);
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            String log = dateFormat.format(LocalDateTime.now()) + " : " + operation + " : " + params + " : "
+                    + " : " + response + "\n";
+            myWriter.write(log);
+            myWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
