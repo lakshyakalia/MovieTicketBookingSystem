@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Logger implementation in MovieTicketService and Server files">
+    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Remove console output">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,10 +43,17 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/laksh/Intellij-workspace/MovieTicketsBookingSystem",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.ATWServer">
     <configuration name="ATWServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Server.ATWServer" />
       <module name="MovieTicketsBookingSystem" />
@@ -112,10 +121,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ATWServer" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.VERServer" />
         <item itemvalue="Application.OUTServer" />
-        <item itemvalue="Application.ATWServer" />
         <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>
@@ -128,6 +137,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1674885194219</updated>
+      <workItem from="1676940966785" duration="128000" />
+      <workItem from="1676941481260" duration="103000" />
+      <workItem from="1676941596445" duration="613000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1674885238951</created>
@@ -381,8 +393,25 @@
       <option name="project" value="LOCAL" />
       <updated>1676084581498</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Logger implementation in Client">
+      <created>1676085789661</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1676085789661</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Remove console output">
+      <created>1676086010282</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1676086010282</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -396,8 +425,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated listMovieShowAvailability udp communication" />
-    <MESSAGE value="Minor improvement" />
     <MESSAGE value="Created structure for bookMovieTickets" />
     <MESSAGE value="Created structure for getBookingSchedule" />
     <MESSAGE value="Created structure for cancelMovieTickets" />
@@ -421,7 +448,9 @@
     <MESSAGE value="minor change" />
     <MESSAGE value="minor changes" />
     <MESSAGE value="Logger implementation in MovieTicketService and Server files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Logger implementation in MovieTicketService and Server files" />
+    <MESSAGE value="Logger implementation in Client" />
+    <MESSAGE value="Remove console output" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove console output" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -432,9 +461,9 @@
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Server/ATWServer.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
