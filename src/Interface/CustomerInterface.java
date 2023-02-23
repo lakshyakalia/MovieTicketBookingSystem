@@ -34,4 +34,16 @@ public interface CustomerInterface extends Remote {
      * @return
      */
     public String cancelMovieTickets(String customerID, String movieID, String movieName, int noOfTickets) throws IOException;
+
+    /**
+     * Exchange tickets
+     * @param customerID
+     * @param movieID
+     * @param new_movieID
+     * @param new_movieName
+     * @param numberOfTickets
+     * @return
+     * @throws IOException
+     */
+    public String exchangeTickets(String customerID, String movieID, String new_movieID, String new_movieName, int numberOfTickets) throws IOException;
 }

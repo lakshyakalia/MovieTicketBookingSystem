@@ -65,6 +65,17 @@ public class ATWServer extends MovieTicketService {
                         callbackResponse = res;
                         break;
                     }
+                    case "exchangeTickets":{
+                        String new_movieID = requestStringArr[5];
+                        String res = atwMovieService.exchangeTickets(userID,movieID,new_movieID,movieName,noOfTickets);
+                        callbackResponse = res;
+                        break;
+                    }
+                    case "exchangeTicketsCapacityUDP": {
+                        String res = atwMovieService.exchangeTicketsCapacityUDP(userID,movieID,movieName,noOfTickets);
+                        callbackResponse = res;
+                        break;
+                    }
                 }
 //                byte[] byteToSend = callbackResponse.trim().getBytes();
                 byte[] byteToSend = callbackResponse.getBytes();

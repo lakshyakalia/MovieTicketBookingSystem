@@ -183,7 +183,24 @@ public class Client extends Constant {
                         System.out.println(res);
                         break;
                     }
-                    case 4:{
+                    case 4:
+                    {
+                        System.out.println("Please enter Movie ID");
+                        String bookMovieID = sc2.nextLine();
+                        System.out.println("Please enter new Movie ID");
+                        String newBookMovieID = sc2.nextLine();
+                        System.out.println("Please enter new Movie Name");
+                        String newBookMovieName = sc2.nextLine();
+                        System.out.println("Please enter new No of Tickets to Book");
+                        int newBookNumberOfTickets = Integer.parseInt(sc2.nextLine());
+                        log="Change Movie Tickets";
+                        String res = customerRef.exchangeTickets(userID, bookMovieID, newBookMovieID, newBookMovieName, newBookNumberOfTickets);
+                        writeToLogFile("exchangeMovieTickets",userID+" "+bookMovieID+" "+newBookMovieID+" "+newBookMovieName+" "+newBookNumberOfTickets,res);
+                        System.out.println(res);
+                        break;
+
+                    }
+                    case 5:{
                         startProg();
                         break;
                     }
@@ -237,7 +254,8 @@ public class Client extends Constant {
                 "1. Book Movie Ticket\n" +
                 "2. Get Booking Schedule\n" +
                 "3. Cancel Movie Tickets\n" +
-                "4. Logout");
+                "4. Exchange Movie Tickets\n" +
+                "5. Logout");
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         return input;

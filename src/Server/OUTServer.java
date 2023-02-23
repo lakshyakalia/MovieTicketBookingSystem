@@ -75,6 +75,17 @@ public class OUTServer extends MovieTicketService {
                         callbackResponse = res;
                         break;
                     }
+                    case "exchangeTickets":{
+                        String new_movieID = requestStringArr[5];
+                        String res = outMovieService.exchangeTickets(userID,movieID,new_movieID,movieName,noOfTickets);
+                        callbackResponse = res;
+                        break;
+                    }
+                    case "exchangeTicketsCapacityUDP": {
+                        String res = outMovieService.exchangeTicketsCapacityUDP(userID,movieID,movieName,noOfTickets);
+                        callbackResponse = res;
+                        break;
+                    }
                 }
                 byte[] byteToSend = callbackResponse.getBytes();
                 DatagramPacket response = new DatagramPacket(byteToSend, byteToSend.length, dp.getAddress(),
