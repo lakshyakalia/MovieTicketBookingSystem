@@ -2,6 +2,8 @@
 
 > Movie Ticket Booking System using CORBA 
 
+> Generate Stubs and Skeleton: (Go to src/) idlj –fall MovieTicket.idl
+
 > #### Command to compile:
 > javac Client/*.java Server/*.java Constants/*.java Interface/*.java Services/*.java movieTicketInterfaceApp/*.java
 
