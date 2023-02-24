@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Created exchange ticket func">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Implemented Movie Ticket System with CORBA">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieTicketsBookingSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicketsBookingSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ATWServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ATWServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/OUTServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/OUTServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/VERServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/VERServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/MovieTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/MovieTicketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +153,7 @@
       <workItem from="1676940966785" duration="128000" />
       <workItem from="1676941481260" duration="103000" />
       <workItem from="1676941596445" duration="613000" />
-      <workItem from="1677085641548" duration="24301000" />
+      <workItem from="1677085641548" duration="25445000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1674885238951</created>
@@ -441,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677131529701</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Implemented Movie Ticket System with CORBA">
+      <created>1677214120247</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1677214120247</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -459,7 +460,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created structure for cancelMovieTickets" />
     <MESSAGE value="Updated bookMovieTickets func" />
     <MESSAGE value="Updated getBookingSchedule func" />
     <MESSAGE value="Modified customer input structure in client file" />
@@ -484,7 +484,8 @@
     <MESSAGE value="Remove console output" />
     <MESSAGE value="Minor commit" />
     <MESSAGE value="Created exchange ticket func" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created exchange ticket func" />
+    <MESSAGE value="Implemented Movie Ticket System with CORBA" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Movie Ticket System with CORBA" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
