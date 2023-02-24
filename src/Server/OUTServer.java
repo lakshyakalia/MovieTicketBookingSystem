@@ -1,6 +1,10 @@
 package Server;
 
 import Services.MovieTicketService;
+import movieTicketInterfaceApp.movieTicketInterface;
+import movieTicketInterfaceApp.movieTicketInterfaceHelper;
+import org.omg.CORBA.ORB;
+import org.omg.PortableServer.POA;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -8,17 +12,48 @@ import java.net.DatagramSocket;
 import java.net.SocketException;
 import java.rmi.Naming;
 
-public class OUTServer extends MovieTicketService {
+public class OUTServer {
 
     public OUTServer() throws Exception {
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
+        try{
+            // create and initialize the ORB
+            ORB orb = ORB.init(args, null);
+            POA rootpoa = (POA)orb.resolve_initial_references("RootPOA");
+            rootpoa.the_POAManager().activate();
+
+            MovieTicketService outMovieService = new MovieTicketService("out","OUT");
+            outMovieService.setORB(orb);
+
+            org.omg.CORBA.Object ref = rootpoa.servant_to_reference(outMovieService);
+            movieTicketInterface href = movieTicketInterfaceHelper.narrow(ref);
+
+            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+            org.omg.CosNaming.NamingContextExt ncRef = org.omg.CosNaming.NamingContextExtHelper.narrow(objRef);
+
+            String name = "out";
+            org.omg.CosNaming.NameComponent path[] = ncRef.to_name(name);
+            ncRef.rebind(path, href);
+
+            System.out.println("OUT Server ready and waiting ...");
+
+            requestListener(outMovieService);
+            while (true) {
+                orb.run();
+            }
+
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 //        DatagramSocket ds = new DatagramSocket(4557);
 
-        MovieTicketService outMovieService = new MovieTicketService("out","OUT");
-        Naming.bind("rmi://localhost/out", outMovieService);
-        System.out.println("OUT Server started...");
+//        MovieTicketService outMovieService = new MovieTicketService("out","OUT");
+//        Naming.bind("rmi://localhost/out", outMovieService);
+//        System.out.println("OUT Server started...");
 
 //        byte[] byteReceiveFromClient = new byte[1024];
 //
@@ -34,7 +69,7 @@ public class OUTServer extends MovieTicketService {
 
 //        System.out.println(str);
 //        Runnable task = () -> {
-            requestListener(outMovieService);
+//            requestListener(outMovieService);
 //        };
 
     }

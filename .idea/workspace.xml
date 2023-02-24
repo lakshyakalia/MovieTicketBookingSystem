@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Minor commit">
+    <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Created exchange ticket func">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovieTicketsBookingSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicketsBookingSystem.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/CustomerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/CustomerInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ATWServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ATWServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/OUTServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/OUTServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/VERServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/VERServer.java" afterDir="false" />
@@ -50,12 +51,15 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/laksh/Intellij-workspace/MovieTicketsBookingSystem",
+    "last_opened_file_path": "C:/Users/laksh/Intellij-workspace/MovieTicketsBookingSystem/src/lib/corba-api-5.0.1.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
@@ -77,6 +81,7 @@
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client.Client" />
       <module name="MovieTicketsBookingSystem" />
+      <option name="PROGRAM_PARAMETERS" value="-ORBInitialPort 1050 -ORBInitialHost localhost" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Client.*" />
@@ -126,6 +131,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.ATWServer" />
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Application.OUTServer" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.VERServer" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Client" />
@@ -147,7 +159,7 @@
       <workItem from="1676940966785" duration="128000" />
       <workItem from="1676941481260" duration="103000" />
       <workItem from="1676941596445" duration="613000" />
-      <workItem from="1677085641548" duration="12950000" />
+      <workItem from="1677085641548" duration="24301000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1674885238951</created>
@@ -422,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677085964097</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Created exchange ticket func">
+      <created>1677131529701</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1677131529701</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -440,7 +459,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created structure for getBookingSchedule" />
     <MESSAGE value="Created structure for cancelMovieTickets" />
     <MESSAGE value="Updated bookMovieTickets func" />
     <MESSAGE value="Updated getBookingSchedule func" />
@@ -465,15 +483,16 @@
     <MESSAGE value="Logger implementation in Client" />
     <MESSAGE value="Remove console output" />
     <MESSAGE value="Minor commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor commit" />
+    <MESSAGE value="Created exchange ticket func" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created exchange ticket func" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
-          <line>289</line>
-          <option name="timeStamp" value="41" />
+          <url>file://$PROJECT_DIR$/src/Client/Client.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

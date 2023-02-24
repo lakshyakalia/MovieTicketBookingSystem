@@ -1,6 +1,10 @@
 package Server;
 
 import Services.MovieTicketService;
+import movieTicketInterfaceApp.movieTicketInterface;
+import movieTicketInterfaceApp.movieTicketInterfaceHelper;
+import org.omg.CORBA.ORB;
+import org.omg.PortableServer.POA;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -8,20 +12,51 @@ import java.net.DatagramSocket;
 import java.net.SocketException;
 import java.rmi.Naming;
 
-public class VERServer extends MovieTicketService {
+public class VERServer {
 
     public VERServer() throws Exception {
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
+        try{
+            // create and initialize the ORB
+            ORB orb = ORB.init(args, null);
+            POA rootpoa = (POA)orb.resolve_initial_references("RootPOA");
+            rootpoa.the_POAManager().activate();
+
+            MovieTicketService verMovieService = new MovieTicketService("ver","VER");
+            verMovieService.setORB(orb);
+
+            org.omg.CORBA.Object ref = rootpoa.servant_to_reference(verMovieService);
+            movieTicketInterface href = movieTicketInterfaceHelper.narrow(ref);
+
+            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+            org.omg.CosNaming.NamingContextExt ncRef = org.omg.CosNaming.NamingContextExtHelper.narrow(objRef);
+
+            String name = "ver";
+            org.omg.CosNaming.NameComponent path[] = ncRef.to_name(name);
+            ncRef.rebind(path, href);
+
+            System.out.println("VER Server ready and waiting ...");
+
+            requestListener(verMovieService);
+            while (true) {
+                orb.run();
+            }
+
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 //        DatagramSocket ds = new DatagramSocket(4558);
 
-        MovieTicketService verMovieService = new MovieTicketService("ver","VER");
-        Naming.bind("rmi://localhost/ver", verMovieService);
-        System.out.println("VER Server started...");
+//        MovieTicketService verMovieService = new MovieTicketService("ver","VER");
+//        Naming.bind("rmi://localhost/ver", verMovieService);
+//        System.out.println("VER Server started...");
 
 //        Runnable task = () -> {
-            requestListener(verMovieService);
+//            requestListener(verMovieService);
 //        };
 
     }

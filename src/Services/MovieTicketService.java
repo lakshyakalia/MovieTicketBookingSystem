@@ -17,11 +17,14 @@ import java.util.*;
 
 import Interface.AdminInterface;
 import Interface.CustomerInterface;
+import movieTicketInterfaceApp.movieTicketInterfacePOA;
 
 import static java.net.HttpURLConnection.*;
 //import static java.net.HttpURLConnection.HTTP_OK;
+//import org.omg.CORBA.ORB;
+import org.omg.CORBA.ORB;
 
-public class MovieTicketService extends UnicastRemoteObject implements AdminInterface, CustomerInterface {
+public class MovieTicketService extends movieTicketInterfacePOA {
 //    MovieName > MovieID : BookingCapacity
     public HashMap<String, HashMap<String, Integer>> movieMap = new HashMap<>();
 //    UserID > MovieName > MovieID : noOfTickets
@@ -32,6 +35,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
     int atwPort = 4556;
     int outPort = 4557;
     int verPort = 4558;
+    private ORB orb;
 
     public static HashMap<String,String> file = new HashMap<>();
 
@@ -58,6 +62,12 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         super();
 
     }
+    public void setORB(ORB orb_val) {
+        orb = orb_val;
+    }
+    public void shutdown() {
+        orb.shutdown(false);
+    }
 
     public String addMovieSlots(String movieID, String movieName, int bookingCapacity){
         log = "Slots not added.";
@@ -65,7 +75,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
 
         if(!movieMap.isEmpty() && movieMap.containsKey(movieName)){
             HashMap<String,Integer> temp = new HashMap<>();
-            for (var x : movieMap.get(movieName).entrySet()) {
+            for (Map.Entry<String, Integer> x : movieMap.get(movieName).entrySet()) {
                 temp.put(x.getKey(), x.getValue());
             }
             temp.put(movieID,bookingCapacity);
@@ -112,7 +122,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         }
         return responseString;
     }
-    public String listMovieShowAvailability(String movieName) throws IOException {
+    public String listMovieShowAvailability(String movieName) {
         log="No Shows Available";
         Status="Failed";
         String serverOneResponse = "";
@@ -122,7 +132,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
 
         if(!movieMap.isEmpty()){
             if(movieMap.containsKey(movieName)) {
-                for (var x : movieMap.get(movieName).entrySet()) {
+                for (Map.Entry<String, Integer> x : movieMap.get(movieName).entrySet()) {
                     responseString = responseString + "Movie Show: " + x.getKey() + " Capacity: " + x.getValue() + "\n";
                 }
             }
@@ -152,7 +162,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         return responseString;
     }
 
-    public String bookMovieTickets(String userID, String movieID, String movieName, int noOfTickets) throws IOException {
+    public String bookMovieTickets(String userID, String movieID, String movieName, int noOfTickets) {
         log="Booking Failed";
         Status="Failed";
 
@@ -186,7 +196,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
                                 }
                                 else {
                                     HashMap<String,Integer> temp = new HashMap<>();
-                                    for (var x : userMap.get(userID).get(movieName).entrySet()) {
+                                    for (Map.Entry<String, Integer> x : userMap.get(userID).get(movieName).entrySet()) {
                                         temp.put(x.getKey(), x.getValue());
                                     }
                                     temp.put(movieID,noOfTickets);
@@ -256,7 +266,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         }
         return serverResponse;
     }
-    public String getBookingSchedule(String userID) throws IOException {
+    public String getBookingSchedule(String userID) {
         log="Schedule fetched successfully";
         Status="Passed";
 
@@ -266,7 +276,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
 
         if(!userMap.isEmpty()) {
             if (userMap.containsKey(userID)) {
-                for (var x : userMap.get(userID).entrySet()) {
+                for (Map.Entry<String, HashMap<String, Integer>> x : userMap.get(userID).entrySet()) {
                     responseString = responseString + "Tickets booked for movie: " + x.getKey() + " at: " + x.getValue() + "\n";
                 }
             }
@@ -286,7 +296,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         writeToLogFile("getBookingSchedule",userID,Status,responseString);
         return responseString;
     }
-    public String cancelMovieTickets(String userID, String movieID, String movieName, int noOfTicketsToCancel) throws IOException {
+    public String cancelMovieTickets(String userID, String movieID, String movieName, int noOfTicketsToCancel) {
         log="Movie tickets cancelled successfully";
         Status="Passed";
 
@@ -354,7 +364,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
     public String listMovieShowAvailabilityUDP(String movieName) {
         String responseString = "";
         if(movieMap.containsKey(movieName)){
-            for(var x: movieMap.get(movieName).entrySet()){
+            for(Map.Entry<String, Integer> x: movieMap.get(movieName).entrySet()){
                 responseString = responseString + "Movie Show: " + x.getKey() + " Capacity: " + x.getValue() + "\n";
             }
         }
@@ -363,7 +373,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         writeToLogFile("listMovieShowAvailabilityUDP",movieName,Status,"List Movie Shows Availability using UDP from " +this.serverName +" server.");
         return responseString;
     }
-    public String exchangeTickets(String userID, String movieID, String new_movieID, String new_movieName, int numberOfTickets) throws IOException {
+    public String exchangeTickets(String userID, String movieID, String new_movieID, String new_movieName, int numberOfTickets){
         log="Movie tickets exchanged successfully";
         Status="Passed";
         String targetServer = movieID.substring(0,3).toLowerCase();
@@ -376,9 +386,9 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
                 if (userMap.containsKey(userID)) {
                     boolean oldMovieIDExists = false;
                     String newMovieCapacityExists = "";
-                    for (var x : userMap.get(userID).entrySet()) {
+                    for (Map.Entry<String, HashMap<String, Integer>> x : userMap.get(userID).entrySet()) {
                         oldMovieName = String.valueOf(x.getKey());
-                        for(var y: x.getValue().entrySet()){
+                        for(Map.Entry<String, Integer> y: x.getValue().entrySet()){
                             if(y.getKey().equals(movieID)){
                                 oldMovieIDExists = true;
                                 break;
@@ -437,7 +447,7 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         String responseString = "";
         if(!userMap.isEmpty()){
             if(userMap.containsKey(userID)){
-                for(var x : userMap.get(userID).entrySet()){
+                for(Map.Entry<String, HashMap<String, Integer>> x : userMap.get(userID).entrySet()){
                     responseString = responseString + "Tickets booked for movie: " + x.getKey() + " at: " + x.getValue() + "\n";
                 }
             }
@@ -458,27 +468,33 @@ public class MovieTicketService extends UnicastRemoteObject implements AdminInte
         }
         return newMovieCapacityExists;
     }
-    public String sendMsgToServer(String func, String userID,String movieName, String movieID,int noOfTickets, int port,String newMovieID) throws IOException {
-        /**
-         * UDP request to
-         * remote server
-         */
-        DatagramSocket ds = new DatagramSocket();
-        String requestString = func + ";" + userID + ";" + movieName + ";" + movieID + ";" + noOfTickets + ";" + newMovieID;
-        byte[] request = requestString.getBytes();
-        InetAddress ia = InetAddress.getLocalHost();
-        DatagramPacket dp = new DatagramPacket(request,request.length,ia,port);
-        ds.send(dp);
+    public String sendMsgToServer(String func, String userID,String movieName, String movieID,int noOfTickets, int port,String newMovieID) {
+        try{
+            /**
+             * UDP request to
+             * remote server
+             */
+            DatagramSocket ds = new DatagramSocket();
+            String requestString = func + ";" + userID + ";" + movieName + ";" + movieID + ";" + noOfTickets + ";" + newMovieID;
+            byte[] request = requestString.getBytes();
+            InetAddress ia = InetAddress.getLocalHost();
+            DatagramPacket dp = new DatagramPacket(request,request.length,ia,port);
+            ds.send(dp);
 
-        /**
-         * UDP response from
-         * remote server
-         */
-        byte[] byteReceive = new byte[2048];
-        DatagramPacket dpReceived = new DatagramPacket(byteReceive,byteReceive.length);
-        ds.receive(dpReceived);
-        System.out.println(dpReceived.getData());
-        return new String(dpReceived.getData()).trim();
+            /**
+             * UDP response from
+             * remote server
+             */
+            byte[] byteReceive = new byte[2048];
+            DatagramPacket dpReceived = new DatagramPacket(byteReceive,byteReceive.length);
+            ds.receive(dpReceived);
+            System.out.println(dpReceived.getData());
+            return new String(dpReceived.getData()).trim();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
     public void writeToLogFile(String operation, String params, String status, String response) {
         try {

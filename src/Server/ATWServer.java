@@ -1,6 +1,10 @@
 package Server;
 
 import Services.MovieTicketService;
+import movieTicketInterfaceApp.movieTicketInterface;
+import movieTicketInterfaceApp.movieTicketInterfaceHelper;
+import org.omg.CORBA.ORB;
+import org.omg.PortableServer.POA;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -9,28 +13,60 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.rmi.Naming;
 
-public class ATWServer extends MovieTicketService {
+public class ATWServer {
 
     public ATWServer() throws Exception {
         super();
     }
 
     public static void main(String[] args) throws Exception {
-        DatagramSocket ds = new DatagramSocket(4556);
+        try{
+            // create and initialize the ORB
+            ORB orb = ORB.init(args, null);
+            POA rootpoa = (POA)orb.resolve_initial_references("RootPOA");
+            rootpoa.the_POAManager().activate();
 
-        MovieTicketService atwMovieService = new MovieTicketService("atw","ATW");
-        Naming.bind("rmi://localhost/atw", atwMovieService);
-        System.out.println("ATW Server started...");
+            MovieTicketService atwMovieService = new MovieTicketService("atw","ATW");
+            atwMovieService.setORB(orb);
+
+            org.omg.CORBA.Object ref = rootpoa.servant_to_reference(atwMovieService);
+            movieTicketInterface href = movieTicketInterfaceHelper.narrow(ref);
+
+            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+            org.omg.CosNaming.NamingContextExt ncRef = org.omg.CosNaming.NamingContextExtHelper.narrow(objRef);
+
+            String name = "atw";
+            org.omg.CosNaming.NameComponent path[] = ncRef.to_name(name);
+            ncRef.rebind(path, href);
+
+            System.out.println("ATW Server ready and waiting ...");
+
+            requestListener(atwMovieService);
+            while (true) {
+                orb.run();
+            }
+
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
+//        MovieTicketService atwMovieService = new MovieTicketService("atw","ATW");
+//        Naming.bind("rmi://localhost/atw", atwMovieService);
+//        System.out.println("ATW Server started...");
 
 //        Runnable task = () -> {
-            requestListener(atwMovieService,ds);
+//            requestListener(atwMovieService,ds);
 //        };
 
     }
-    public static void requestListener(MovieTicketService atwMovieService, DatagramSocket ds) {
+    public static void requestListener(MovieTicketService atwMovieService) {
         try{
             String callbackResponse = "";
-
+            DatagramSocket ds = new DatagramSocket(4556);
             byte[] byteRequest = new byte[1024];
             while (true){
 

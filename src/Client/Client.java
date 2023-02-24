@@ -3,6 +3,14 @@ package Client;
 import Constants.Constant;
 import Interface.AdminInterface;
 import Interface.CustomerInterface;
+import movieTicketInterfaceApp.movieTicketInterface;
+import movieTicketInterfaceApp.movieTicketInterfaceHelper;
+import org.omg.CORBA.ORB;
+import org.omg.CosNaming.NamingContextExt;
+import org.omg.CosNaming.NamingContextExtHelper;
+import org.omg.CosNaming.NamingContextPackage.CannotProceed;
+import org.omg.CosNaming.NamingContextPackage.InvalidName;
+import org.omg.CosNaming.NamingContextPackage.NotFound;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,9 +25,13 @@ public class Client extends Constant {
     public static String currentUser;
     public static String log;
     public static void main(String[] args) throws Exception {
-        startProg();
+        ORB orb = ORB.init(args, null);
+        org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+        NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
+
+        startProg(ncRef);
     }
-    public static void startProg() throws IOException, NotBoundException {
+    public static void startProg(NamingContextExt ncRef) throws IOException, NotBoundException, InvalidName, CannotProceed, NotFound {
         System.out.println("Please enter user id: ");
         Scanner sc = new Scanner(System.in);
         String userID = sc.nextLine();
@@ -28,8 +40,9 @@ public class Client extends Constant {
         String serverPort = getServerPort(userID);
         currentUser = userID;
 
+        movieTicketInterface servant = movieTicketInterfaceHelper.narrow(ncRef.resolve_str(serverPort));
         if(isAdmin){
-            AdminInterface adminRef = (AdminInterface) Naming.lookup(serverPort);
+//            AdminInterface adminRef = (AdminInterface) Naming.lookup(serverPort);
 
             while(true){
                 int option = Integer.parseInt(showAdminMenu());
@@ -60,7 +73,7 @@ public class Client extends Constant {
                         System.out.println("Please enter Booking Capacity");
                         int addBookingCapacity = Integer.parseInt(sc2.nextLine());
                         log="Add Movie Slots";
-                        String res = adminRef.addMovieSlots(addMovieID, addMovieName, addBookingCapacity);
+                        String res = servant.addMovieSlots(addMovieID, addMovieName, addBookingCapacity);
                         writeToLogFile("addMovieSlots",userID+" "+addMovieID+" "+addMovieName+" "+addBookingCapacity,res);
                         System.out.println(res);
                         break;
@@ -84,7 +97,7 @@ public class Client extends Constant {
                         }
 
                         log="Remove Movie Slots";
-                        String res = adminRef.removeMovieSlots(removeMovieID, removeMovieName);
+                        String res = servant.removeMovieSlots(removeMovieID, removeMovieName);
                         writeToLogFile("removeMovieSlots",userID+" "+removeMovieID+" "+removeMovieName,res);
                         System.out.println(res);
                         break;
@@ -93,7 +106,7 @@ public class Client extends Constant {
                         System.out.println("Please enter Movie Name");
                         String listMovieName = sc2.nextLine();
                         log="List Movie Show Availability";
-                        String res = adminRef.listMovieShowAvailability(listMovieName);
+                        String res = servant.listMovieShowAvailability(listMovieName);
                         writeToLogFile("listMovieShowsAvailability",userID+" "+listMovieName,res);
                         System.out.println(res);
                         break;
@@ -106,14 +119,14 @@ public class Client extends Constant {
                         System.out.println("Please enter No of Tickets to Book");
                         int bookNumberOfTickets = Integer.parseInt(sc2.nextLine());
                         log="Book Movie Tickets";
-                        String res = adminRef.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
+                        String res = servant.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
                         writeToLogFile("bookMovieTickets",userID+" "+bookMovieID+" "+bookMovieName+" "+bookNumberOfTickets,res);
                         System.out.println(res.split(";")[res.split(";").length-1]);
                         break;
                     }
                     case 5:{
                         log="Get Booking Done by user";
-                        String res = adminRef.getBookingSchedule(userID);
+                        String res = servant.getBookingSchedule(userID);
                         writeToLogFile("getBookingSchedule",userID,res);
                         System.out.println(res);
                         break;
@@ -126,22 +139,23 @@ public class Client extends Constant {
                         System.out.println("Please enter No of Tickets to Cancel");
                         int cancelBookNumberOfTickets = Integer.parseInt(sc2.nextLine());
                         log="Tickets Cancelled.";
-                        String res = adminRef.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
+                        String res = servant.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
                         writeToLogFile("cancelMovieTickets",userID+" "+cancelBookMovieID+" "+cancelBookMovieName+" "+cancelBookNumberOfTickets,res);
                         System.out.println(res);
                         break;
                     }
                     case 7:{
-                        startProg();
+                        startProg(ncRef);
                         break;
                     }
                     default:
+                        servant.shutdown();
                         break;
                 }
             }
         }
         else {
-            CustomerInterface customerRef = (CustomerInterface) Naming.lookup(serverPort);
+//            CustomerInterface customerRef = (CustomerInterface) Naming.lookup(serverPort);
             while(true){
                 int option = Integer.parseInt(showCustomerMenu());
                 Scanner sc2 = new Scanner(System.in);
@@ -156,7 +170,7 @@ public class Client extends Constant {
                         System.out.println("Please enter No of Tickets to Book");
                         int bookNumberOfTickets = Integer.parseInt(sc2.nextLine());
                         log="Book Movie Tickets";
-                        String res = customerRef.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
+                        String res = servant.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
                         writeToLogFile("bookMovieTickets",userID+" "+bookMovieID+" "+bookMovieName+" "+bookNumberOfTickets,res);
                         System.out.println(res.split(";")[res.split(";").length-1]);
                         break;
@@ -164,7 +178,7 @@ public class Client extends Constant {
                     case 2:
                     {
                         log="Get Booking Done by user";
-                        String res = customerRef.getBookingSchedule(userID);
+                        String res = servant.getBookingSchedule(userID);
                         writeToLogFile("getBookingSchedule",userID,res);
                         System.out.println(res);
                         break;
@@ -178,7 +192,7 @@ public class Client extends Constant {
                         System.out.println("Please enter No of Tickets to Cancel");
                         int cancelBookNumberOfTickets = Integer.parseInt(sc2.nextLine());
                         log="Tickets Cancelled.";
-                        String res = customerRef.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
+                        String res = servant.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
                         writeToLogFile("cancelMovieTickets",userID+" "+cancelBookMovieID+" "+cancelBookMovieName+" "+cancelBookNumberOfTickets,res);
                         System.out.println(res);
                         break;
@@ -194,16 +208,19 @@ public class Client extends Constant {
                         System.out.println("Please enter new No of Tickets to Book");
                         int newBookNumberOfTickets = Integer.parseInt(sc2.nextLine());
                         log="Change Movie Tickets";
-                        String res = customerRef.exchangeTickets(userID, bookMovieID, newBookMovieID, newBookMovieName, newBookNumberOfTickets);
+                        String res = servant.exchangeTickets(userID, bookMovieID, newBookMovieID, newBookMovieName, newBookNumberOfTickets);
                         writeToLogFile("exchangeMovieTickets",userID+" "+bookMovieID+" "+newBookMovieID+" "+newBookMovieName+" "+newBookNumberOfTickets,res);
                         System.out.println(res);
                         break;
 
                     }
                     case 5:{
-                        startProg();
+                        startProg(ncRef);
                         break;
                     }
+                    default:
+                        servant.shutdown();
+                        break;
                 }
             }
 
@@ -227,11 +244,11 @@ public class Client extends Constant {
         String serverSubstring = userID.substring(0,3);
         switch (serverSubstring){
             case "ATW":
-                return getATWServer();
+                return "atw";
             case "OUT":
-                return getOUTServer();
+                return "out";
             case "VER":
-                return getVERServer();
+                return "ver";
         }
         return null;
     }
