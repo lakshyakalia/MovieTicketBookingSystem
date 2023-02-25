@@ -416,6 +416,7 @@ public class MovieTicketService extends movieTicketInterfacePOA {
                             String res1 = this.bookMovieTickets(userID,new_movieID,new_movieName,numberOfTickets);
                             String res2 = this.cancelMovieTickets(userID,movieID,oldMovieName,numberOfTickets);
                             responseString = "Movie Tickets Exchanged!";
+                            writeToLogFile("exchangeTickets",new_movieName,Status,"Tickets exchanged on " +this.serverName +" server.");
                         }
                     }
                     else {
