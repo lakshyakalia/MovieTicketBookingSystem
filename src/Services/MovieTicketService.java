@@ -37,6 +37,11 @@ public class MovieTicketService extends movieTicketInterfacePOA {
     int outPort = 4557;
     int verPort = 4558;
     private ORB orb;
+    String serverOneResponse = "";
+    String serverTwoResponse = "";
+    String serverResponse = "";
+    String newMovieCapacityExists = "";
+    String responseString = "";
 
     public static HashMap<String,String> file = new HashMap<>();
 
@@ -126,8 +131,9 @@ public class MovieTicketService extends movieTicketInterfacePOA {
     public String listMovieShowAvailability(String movieName) {
         log="No Shows Available";
         Status="Failed";
-        String serverOneResponse = "";
-        String serverTwoResponse = "";
+        serverOneResponse = "";
+        serverTwoResponse = "";
+
 
         String responseString = "";
 
@@ -140,14 +146,14 @@ public class MovieTicketService extends movieTicketInterfacePOA {
         }
 
         if (this.serverID.equals("atw")) {
-            serverOneResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, outPort,null);
-            serverTwoResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, verPort,null);
+            new Thread(() -> serverOneResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, outPort,null)).start();
+            new Thread(() -> serverTwoResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, verPort,null)).start();
         } else if (this.serverID.equals("out")) {
-            serverOneResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, atwPort,null);
-            serverTwoResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, verPort,null);
+            new Thread(() -> serverOneResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, atwPort,null)).start();
+            new Thread(() -> serverTwoResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, verPort,null)).start();
         } else if (this.serverID.equals("ver")) {
-            serverOneResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, atwPort,null);
-            serverTwoResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, outPort,null);
+            new Thread(() -> serverOneResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, atwPort,null)).start();
+            new Thread(() -> serverTwoResponse = sendMsgToServer("listMovieShowAvailability", null, movieName, null, 0, outPort,null)).start();
         }
 
         responseString = responseString + "\n" + serverOneResponse + "\n" + serverTwoResponse;
@@ -168,7 +174,7 @@ public class MovieTicketService extends movieTicketInterfacePOA {
         Status="Failed";
 
         String targetServer = movieID.substring(0,3).toLowerCase();
-        String serverResponse = "";
+        serverResponse = "";
 
         String userTargetServer = userID.substring(0,3).toLowerCase();
         boolean flag = false;
@@ -259,11 +265,12 @@ public class MovieTicketService extends movieTicketInterfacePOA {
             }
 
         } else if (targetServer.equals("atw")) {
-            serverResponse = sendMsgToServer("bookMovieTickets",userID,movieName,movieID,noOfTickets,atwPort,null);
+
+            new Thread(() -> serverResponse = sendMsgToServer("bookMovieTickets",userID,movieName,movieID,noOfTickets,atwPort,null)).start();
         } else if (targetServer.equals("out")) {
-            serverResponse = sendMsgToServer("bookMovieTickets",userID,movieName,movieID,noOfTickets,outPort,null);
+            new Thread(() -> serverResponse = sendMsgToServer("bookMovieTickets",userID,movieName,movieID,noOfTickets,outPort,null)).start();
         } else if (targetServer.equals("ver")) {
-            serverResponse = sendMsgToServer("bookMovieTickets",userID,movieName,movieID,noOfTickets,verPort,null);
+            new Thread(() -> serverResponse = sendMsgToServer("bookMovieTickets",userID,movieName,movieID,noOfTickets,verPort,null)).start();
         }
         return serverResponse;
     }
@@ -271,8 +278,8 @@ public class MovieTicketService extends movieTicketInterfacePOA {
         log="Schedule fetched successfully";
         Status="Passed";
 
-        String serverOneResponse = "";
-        String serverTwoResponse = "";
+        serverOneResponse = "";
+        serverTwoResponse = "";
         String responseString = "";
 
         if(!userMap.isEmpty()) {
@@ -284,14 +291,14 @@ public class MovieTicketService extends movieTicketInterfacePOA {
         }
 
         if(this.serverID.equals("atw")){
-            serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,outPort,null);
-            serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,verPort,null);
+            new Thread(() -> serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,outPort,null)).start();
+            new Thread(() -> serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,verPort,null)).start();
         } else if(this.serverID.equals("out")){
-            serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,atwPort,null);
-            serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,verPort,null);
+            new Thread(() -> serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,atwPort,null)).start();
+            new Thread(() -> serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,verPort,null)).start();
         } else if (this.serverID.equals("ver")) {
-            serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,atwPort,null);
-            serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,outPort,null);
+            new Thread(() -> serverOneResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,atwPort,null)).start();
+            new Thread(() -> serverTwoResponse = sendMsgToServer("getBookingSchedule",userID,null,null,0,outPort,null)).start();
         }
         responseString = responseString + "\n" + serverOneResponse + "\n" + serverTwoResponse;
         writeToLogFile("getBookingSchedule",userID,Status,responseString);
@@ -302,7 +309,7 @@ public class MovieTicketService extends movieTicketInterfacePOA {
         Status="Passed";
 
         String targetServer = movieID.substring(0,3).toLowerCase();
-        String serverResponse = "";
+        serverResponse = "";
 
         if(this.serverID.equals(targetServer)){
             if(movieMap.containsKey(movieName)){
@@ -353,11 +360,11 @@ public class MovieTicketService extends movieTicketInterfacePOA {
                 serverResponse = "No movie found.";
             }
         } else if (targetServer.equals("atw")) {
-            serverResponse = sendMsgToServer("cancelMovieTickets",userID,movieName,movieID,noOfTicketsToCancel,atwPort,null);
+            new Thread(() -> serverResponse = sendMsgToServer("cancelMovieTickets",userID,movieName,movieID,noOfTicketsToCancel,atwPort,null)).start();
         } else if (targetServer.equals("out")) {
-            serverResponse = sendMsgToServer("cancelMovieTickets",userID,movieName,movieID,noOfTicketsToCancel,outPort,null);
+            new Thread(() -> serverResponse = sendMsgToServer("cancelMovieTickets",userID,movieName,movieID,noOfTicketsToCancel,outPort,null)).start();
         } else if (targetServer.equals("ver")) {
-            serverResponse = sendMsgToServer("cancelMovieTickets",userID,movieName,movieID,noOfTicketsToCancel,verPort,null);
+            new Thread(() -> serverResponse = sendMsgToServer("cancelMovieTickets",userID,movieName,movieID,noOfTicketsToCancel,verPort,null)).start();
         }
         return serverResponse;
     }
@@ -379,14 +386,14 @@ public class MovieTicketService extends movieTicketInterfacePOA {
         Status="Passed";
         String targetServer = movieID.substring(0,3).toLowerCase();
         String newTargetServer = new_movieID.substring(0,3).toLowerCase();
-        String responseString = "";
+        responseString = "";
 
         String oldMovieName = "";
         if(this.serverID.equals(targetServer)){
             if(!userMap.isEmpty()) {
                 if (userMap.containsKey(userID)) {
                     boolean oldMovieIDExists = false;
-                    String newMovieCapacityExists = "";
+                    newMovieCapacityExists = "";
                     for (Map.Entry<String, HashMap<String, Integer>> x : userMap.get(userID).entrySet()) {
                         oldMovieName = String.valueOf(x.getKey());
                         for(Map.Entry<String, Integer> y: x.getValue().entrySet()){
@@ -407,11 +414,11 @@ public class MovieTicketService extends movieTicketInterfacePOA {
                             }
 
                         } else if (newTargetServer.equals("atw")) {
-                            newMovieCapacityExists = sendMsgToServer("exchangeTicketsCapacityUDP",userID,new_movieName,new_movieID,numberOfTickets,atwPort,null);
+                            new Thread(() -> newMovieCapacityExists = sendMsgToServer("exchangeTicketsCapacityUDP",userID,new_movieName,new_movieID,numberOfTickets,atwPort,null)).start();
                         } else if (newTargetServer.equals("out")) {
-                            newMovieCapacityExists = sendMsgToServer("exchangeTicketsCapacityUDP",userID,new_movieName,new_movieID,numberOfTickets,outPort,null);
+                            new Thread(() -> newMovieCapacityExists = sendMsgToServer("exchangeTicketsCapacityUDP",userID,new_movieName,new_movieID,numberOfTickets,outPort,null)).start();
                         } else if (newTargetServer.equals("ver")) {
-                            newMovieCapacityExists = sendMsgToServer("exchangeTicketsCapacityUDP",userID,new_movieName,new_movieID,numberOfTickets,verPort,null);
+                            new Thread(() -> newMovieCapacityExists = sendMsgToServer("exchangeTicketsCapacityUDP",userID,new_movieName,new_movieID,numberOfTickets,verPort,null)).start();
                         }
                         if(newMovieCapacityExists.equals("true")){
                             String res1 = this.bookMovieTickets(userID,new_movieID,new_movieName,numberOfTickets);
@@ -436,11 +443,11 @@ public class MovieTicketService extends movieTicketInterfacePOA {
                 }
             }
         } else if (targetServer.equals("atw")) {
-            responseString = sendMsgToServer("exchangeTickets",userID,new_movieName,movieID,numberOfTickets,atwPort,new_movieID);
+            new Thread(() ->  responseString = sendMsgToServer("exchangeTickets",userID,new_movieName,movieID,numberOfTickets,atwPort,new_movieID)).start();
         } else if (targetServer.equals("out")) {
-            responseString = sendMsgToServer("exchangeTickets",userID,new_movieName,movieID,numberOfTickets,outPort,new_movieID);
+            new Thread(() ->  responseString = sendMsgToServer("exchangeTickets",userID,new_movieName,movieID,numberOfTickets,outPort,new_movieID)).start();
         } else if (targetServer.equals("ver")) {
-            responseString = sendMsgToServer("exchangeTickets",userID,new_movieName,movieID,numberOfTickets,verPort,new_movieID);
+            new Thread(() ->  responseString = sendMsgToServer("exchangeTickets",userID,new_movieName,movieID,numberOfTickets,verPort,new_movieID)).start();
         }
 
         return responseString;
