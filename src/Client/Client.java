@@ -17,8 +17,11 @@ import java.io.IOException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Client extends Constant {
@@ -31,7 +34,7 @@ public class Client extends Constant {
 
         startProg(ncRef);
     }
-    public static void startProg(NamingContextExt ncRef) throws IOException, NotBoundException, InvalidName, CannotProceed, NotFound {
+    public static void startProg(NamingContextExt ncRef) throws IOException, NotBoundException, InvalidName, CannotProceed, NotFound, ParseException {
         System.out.println("Please enter user id: ");
         Scanner sc = new Scanner(System.in);
         String userID = sc.nextLine();
@@ -60,6 +63,15 @@ public class Client extends Constant {
                         while (true){
                             System.out.println("Please enter Movie ID");
                             addMovieID = sc2.nextLine();
+                            int year=2000+Integer.parseInt(addMovieID.substring(8));
+                            String userDate=year+""+addMovieID.substring(6,8)+""+addMovieID.substring(4,6);
+                            SimpleDateFormat dateFormat=new SimpleDateFormat("yyyyMMdd");
+                            Date date= dateFormat.parse(userDate);
+                            int dateDiff= (int) (date.getTime()-new Date().getTime())/(1000*60*60*24);
+                            if (dateDiff > 6 || dateDiff<0){
+                                System.out.println("Invalid Date. Please try again.");
+                                continue;
+                            }
                             if(addMovieID.substring(0,3).equals(userID.substring(0,3))){
                                 break;
                             }
