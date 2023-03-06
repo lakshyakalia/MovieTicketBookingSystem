@@ -1,0 +1,15 @@
+06-03-2023 15:49:35 : bookMovieTickets : ATWC1234 ATWM060323 AVATAR 4 :  : Tickets Booked.
+06-03-2023 15:49:37 : getBookingSchedule : ATWC1234 :  : Tickets booked for movie: AVATAR at: {ATWM060323=4}
+
+
+
+06-03-2023 15:49:51 : exchangeMovieTickets : ATWC1234 ATWM060323 OUTM060323 AVATAR 2 :  : Movie Tickets Exchanged!
+06-03-2023 15:49:54 : getBookingSchedule : ATWC1234 :  : Tickets booked for movie: AVATAR at: {ATWM060323=2}
+
+Tickets booked for movie: AVATAR at: {OUTM060323=2}
+
+06-03-2023 15:50:21 : exchangeMovieTickets : ATWC1234 OUTM060323 ATWM060323 AVATAR 2 :  : Movie Tickets Exchanged!
+06-03-2023 15:50:23 : getBookingSchedule : ATWC1234 :  : Tickets booked for movie: AVATAR at: {ATWM060323=4}
+
+Tickets booked for movie: AVATAR at: {}
+

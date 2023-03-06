@@ -1,0 +1,3 @@
+06-03-2023 15:49:37 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from VER server.
+06-03-2023 15:49:54 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from VER server.
+06-03-2023 15:50:23 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from VER server.

@@ -1,0 +1,7 @@
+06-03-2023 15:49:04 : addMovieSlots : Movie- AVATAR Show at- OUTM060323 77 : Passed : 77 slots for movie AVATAR for movie ID OUTM060323 have been added.
+06-03-2023 15:49:37 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from OUT server.
+06-03-2023 15:49:51 : bookMovieTickets : ATWC1234 OUTM060323 AVATAR 2 : Success : Tickets Booking Booked
+06-03-2023 15:49:54 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from OUT server.
+06-03-2023 15:50:21 : cancelMovieTickets : ATWC1234 OUTM060323 AVATAR 2 : Passed : Tickets successfully cancelled!
+06-03-2023 15:50:21 : exchangeTickets : AVATAR : Passed : Tickets exchanged on OUT server.
+06-03-2023 15:50:23 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from OUT server.
