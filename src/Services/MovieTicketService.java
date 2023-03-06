@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 import Interface.AdminInterface;
 import Interface.CustomerInterface;
@@ -26,9 +27,9 @@ import org.omg.CORBA.ORB;
 
 public class MovieTicketService extends movieTicketInterfacePOA {
 //    MovieName > MovieID : BookingCapacity
-    public HashMap<String, HashMap<String, Integer>> movieMap = new HashMap<>();
+    public Map<String, HashMap<String, Integer>> movieMap = new ConcurrentHashMap<>();
 //    UserID > MovieName > MovieID : noOfTickets
-    public HashMap<String, HashMap<String, HashMap<String, Integer>>> userMap = new HashMap<>();
+    public Map<String, HashMap<String, HashMap<String, Integer>>> userMap = new ConcurrentHashMap<>();
     DatagramSocket dss;
     String serverID = "";
     String serverName = "";
