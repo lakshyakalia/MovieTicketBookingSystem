@@ -192,7 +192,7 @@ public class MovieTicketService extends movieTicketInterfacePOA {
                                     log="Movie Tickets Updated";
                                     Status="Success";
                                     writeToLogFile("bookMovieTickets",userID+" "+movieID+" "+movieName+" "+noOfTickets,Status,"Tickets Booking Updated");
-                                    serverResponse = "Tickets Booking Updated.";
+                                    serverResponse = "Tickets Booked.";
                                 }
                                 else {
                                     HashMap<String,Integer> temp = new HashMap<>();
@@ -414,7 +414,10 @@ public class MovieTicketService extends movieTicketInterfacePOA {
                         }
                         if(newMovieCapacityExists.equals("true")){
                             String res1 = this.bookMovieTickets(userID,new_movieID,new_movieName,numberOfTickets);
-                            String res2 = this.cancelMovieTickets(userID,movieID,oldMovieName,numberOfTickets);
+                            if(res1.equals("Tickets Booked.")){
+                                String res2 = this.cancelMovieTickets(userID,movieID,oldMovieName,numberOfTickets);
+                            }
+
                             responseString = "Movie Tickets Exchanged!";
                             writeToLogFile("exchangeTickets",new_movieName,Status,"Tickets exchanged on " +this.serverName +" server.");
                         }
