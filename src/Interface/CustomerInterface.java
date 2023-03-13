@@ -3,8 +3,12 @@ package Interface;
 import java.io.IOException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
 
-public interface CustomerInterface extends Remote {
+@WebService
+@SOAPBinding(style = SOAPBinding.Style.RPC)
+public interface CustomerInterface {
 
     /**
      * Book Movie Tickets
@@ -14,7 +18,7 @@ public interface CustomerInterface extends Remote {
      * @param noOfTickets
      * @return
      */
-    public String bookMovieTickets(String customerID, String movieID, String movieName, int noOfTickets) throws IOException;
+    public String bookMovieTickets(String customerID, String movieID, String movieName, int noOfTickets);
 
     /**
      * Get list of all bookings
@@ -22,7 +26,7 @@ public interface CustomerInterface extends Remote {
      * @param customerID
      * @return
      */
-    public String getBookingSchedule(String customerID) throws IOException;
+    public String getBookingSchedule(String customerID);
 
     /**
      * Cancel any tickets booked
@@ -33,7 +37,7 @@ public interface CustomerInterface extends Remote {
      * @param noOfTickets
      * @return
      */
-    public String cancelMovieTickets(String customerID, String movieID, String movieName, int noOfTickets) throws IOException;
+    public String cancelMovieTickets(String customerID, String movieID, String movieName, int noOfTickets) ;
 
     /**
      * Exchange tickets
@@ -43,7 +47,7 @@ public interface CustomerInterface extends Remote {
      * @param new_movieName
      * @param numberOfTickets
      * @return
-     * @throws IOException
+     * @
      */
-    public String exchangeTickets(String customerID, String movieID, String new_movieID, String new_movieName, int numberOfTickets) throws IOException;
+    public String exchangeTickets(String customerID, String movieID, String new_movieID, String new_movieName, int numberOfTickets) ;
 }

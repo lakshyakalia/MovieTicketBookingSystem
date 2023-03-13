@@ -17,17 +17,22 @@ import java.util.*;
 
 import Interface.AdminInterface;
 import Interface.CustomerInterface;
-import movieTicketInterfaceApp.movieTicketInterfacePOA;
 
 import static java.net.HttpURLConnection.*;
 //import static java.net.HttpURLConnection.HTTP_OK;
 //import org.omg.CORBA.ORB;
 import org.omg.CORBA.ORB;
 
-public class MovieTicketService extends movieTicketInterfacePOA {
-//    MovieName > MovieID : BookingCapacity
+import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
+
+@WebService(endpointInterface = "Interface.MovieInterface")
+
+@SOAPBinding(style = SOAPBinding.Style.RPC)
+public class MovieTicketService {
+    //    MovieName > MovieID : BookingCapacity
     public HashMap<String, HashMap<String, Integer>> movieMap = new HashMap<>();
-//    UserID > MovieName > MovieID : noOfTickets
+    //    UserID > MovieName > MovieID : noOfTickets
     public HashMap<String, HashMap<String, HashMap<String, Integer>>> userMap = new HashMap<>();
     DatagramSocket dss;
     String serverID = "";

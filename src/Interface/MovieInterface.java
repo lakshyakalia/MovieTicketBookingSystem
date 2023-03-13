@@ -1,13 +1,11 @@
 package Interface;
-import java.io.IOException;
-import java.rmi.*;
+
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
 @WebService
 @SOAPBinding(style = SOAPBinding.Style.RPC)
-public interface AdminInterface {
-
+public interface MovieInterface {
     /**
      * Adding Movie Slots
      * @param movieID
@@ -62,5 +60,5 @@ public interface AdminInterface {
      * @return
      */
     public String cancelMovieTickets(String customerID, String movieID, String movieName, int noOfTickets) ;
-//    public void test() ;
+    public String exchangeTickets(String customerID, String movieID, String new_movieID, String new_movieName, int numberOfTickets) ;
 }

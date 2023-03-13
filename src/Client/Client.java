@@ -3,17 +3,16 @@ package Client;
 import Constants.Constant;
 import Interface.AdminInterface;
 import Interface.CustomerInterface;
-import movieTicketInterfaceApp.movieTicketInterface;
-import movieTicketInterfaceApp.movieTicketInterfaceHelper;
-import org.omg.CORBA.ORB;
-import org.omg.CosNaming.NamingContextExt;
-import org.omg.CosNaming.NamingContextExtHelper;
+import Interface.MovieInterface;
 import org.omg.CosNaming.NamingContextPackage.CannotProceed;
 import org.omg.CosNaming.NamingContextPackage.InvalidName;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 
+import javax.xml.namespace.QName;
+import javax.xml.ws.Service;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -25,16 +24,28 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Client extends Constant {
+    public static MovieInterface movieRef;
+//    public static CustomerInterface customerRef;
     public static String currentUser;
     public static String log;
+    public static Service atwService;
+    public static Service verService;
+    public static Service outService;
     public static void main(String[] args) throws Exception {
-        ORB orb = ORB.init(args, null);
-        org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
-        NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
+        URL atwaterURL = new URL("http://localhost:8070/atwater?wsdl");
+        QName atwaterQName = new QName("http://Services/", "MovieTicketServiceService");
+        atwService = Service.create(atwaterURL, atwaterQName);
 
-        startProg(ncRef);
+        URL outremontURL = new URL("http://localhost:8080/outremont?wsdl");
+        QName outremontQName = new QName("http://Services/", "MovieTicketServiceService");
+        outService = Service.create(outremontURL, outremontQName);
+
+        URL verdunURL = new URL("http://localhost:8090/verdun?wsdl");
+        QName verdunQName = new QName("http://Services/", "MovieTicketServiceService");
+        verService = Service.create(verdunURL,verdunQName);
+        startProg();
     }
-    public static void startProg(NamingContextExt ncRef) throws IOException, NotBoundException, InvalidName, CannotProceed, NotFound, ParseException {
+    public static void startProg() throws IOException, NotBoundException, InvalidName, CannotProceed, NotFound, ParseException {
         System.out.println("Please enter user id: ");
         Scanner sc = new Scanner(System.in);
         String userID = sc.nextLine();
@@ -43,9 +54,7 @@ public class Client extends Constant {
         String serverPort = getServerPort(userID);
         currentUser = userID;
 
-        movieTicketInterface servant = movieTicketInterfaceHelper.narrow(ncRef.resolve_str(serverPort));
         if(isAdmin){
-//            AdminInterface adminRef = (AdminInterface) Naming.lookup(serverPort);
 
             while(true){
                 int option = Integer.parseInt(showAdminMenu());
@@ -85,7 +94,7 @@ public class Client extends Constant {
                         System.out.println("Please enter Booking Capacity");
                         int addBookingCapacity = Integer.parseInt(sc2.nextLine());
                         log="Add Movie Slots";
-                        String res = servant.addMovieSlots(addMovieID, addMovieName, addBookingCapacity);
+                        String res = movieRef.addMovieSlots(addMovieID, addMovieName, addBookingCapacity);
                         writeToLogFile("addMovieSlots",userID+" "+addMovieID+" "+addMovieName+" "+addBookingCapacity,res);
                         System.out.println(res);
                         break;
@@ -109,7 +118,7 @@ public class Client extends Constant {
                         }
 
                         log="Remove Movie Slots";
-                        String res = servant.removeMovieSlots(removeMovieID, removeMovieName);
+                        String res = movieRef.removeMovieSlots(removeMovieID, removeMovieName);
                         writeToLogFile("removeMovieSlots",userID+" "+removeMovieID+" "+removeMovieName,res);
                         System.out.println(res);
                         break;
@@ -118,7 +127,7 @@ public class Client extends Constant {
                         System.out.println("Please enter Movie Name");
                         String listMovieName = sc2.nextLine();
                         log="List Movie Show Availability";
-                        String res = servant.listMovieShowAvailability(listMovieName);
+                        String res = movieRef.listMovieShowAvailability(listMovieName);
                         writeToLogFile("listMovieShowsAvailability",userID+" "+listMovieName,res);
                         System.out.println(res);
                         break;
@@ -131,14 +140,14 @@ public class Client extends Constant {
                         System.out.println("Please enter No of Tickets to Book");
                         int bookNumberOfTickets = Integer.parseInt(sc2.nextLine());
                         log="Book Movie Tickets";
-                        String res = servant.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
+                        String res = movieRef.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
                         writeToLogFile("bookMovieTickets",userID+" "+bookMovieID+" "+bookMovieName+" "+bookNumberOfTickets,res);
                         System.out.println(res.split(";")[res.split(";").length-1]);
                         break;
                     }
                     case 5:{
                         log="Get Booking Done by user";
-                        String res = servant.getBookingSchedule(userID);
+                        String res = movieRef.getBookingSchedule(userID);
                         writeToLogFile("getBookingSchedule",userID,res);
                         System.out.println(res);
                         break;
@@ -151,23 +160,21 @@ public class Client extends Constant {
                         System.out.println("Please enter No of Tickets to Cancel");
                         int cancelBookNumberOfTickets = Integer.parseInt(sc2.nextLine());
                         log="Tickets Cancelled.";
-                        String res = servant.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
+                        String res = movieRef.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
                         writeToLogFile("cancelMovieTickets",userID+" "+cancelBookMovieID+" "+cancelBookMovieName+" "+cancelBookNumberOfTickets,res);
                         System.out.println(res);
                         break;
                     }
                     case 7:{
-                        startProg(ncRef);
+                        startProg();
                         break;
                     }
                     default:
-                        servant.shutdown();
                         break;
                 }
             }
         }
         else {
-//            CustomerInterface customerRef = (CustomerInterface) Naming.lookup(serverPort);
             while(true){
                 int option = Integer.parseInt(showCustomerMenu());
                 Scanner sc2 = new Scanner(System.in);
@@ -182,7 +189,7 @@ public class Client extends Constant {
                         System.out.println("Please enter No of Tickets to Book");
                         int bookNumberOfTickets = Integer.parseInt(sc2.nextLine());
                         log="Book Movie Tickets";
-                        String res = servant.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
+                        String res = movieRef.bookMovieTickets(userID, bookMovieID, bookMovieName, bookNumberOfTickets);
                         writeToLogFile("bookMovieTickets",userID+" "+bookMovieID+" "+bookMovieName+" "+bookNumberOfTickets,res);
                         System.out.println(res.split(";")[res.split(";").length-1]);
                         break;
@@ -190,7 +197,7 @@ public class Client extends Constant {
                     case 2:
                     {
                         log="Get Booking Done by user";
-                        String res = servant.getBookingSchedule(userID);
+                        String res = movieRef.getBookingSchedule(userID);
                         writeToLogFile("getBookingSchedule",userID,res);
                         System.out.println(res);
                         break;
@@ -204,7 +211,7 @@ public class Client extends Constant {
                         System.out.println("Please enter No of Tickets to Cancel");
                         int cancelBookNumberOfTickets = Integer.parseInt(sc2.nextLine());
                         log="Tickets Cancelled.";
-                        String res = servant.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
+                        String res = movieRef.cancelMovieTickets(userID, cancelBookMovieID, cancelBookMovieName, cancelBookNumberOfTickets);
                         writeToLogFile("cancelMovieTickets",userID+" "+cancelBookMovieID+" "+cancelBookMovieName+" "+cancelBookNumberOfTickets,res);
                         System.out.println(res);
                         break;
@@ -220,18 +227,18 @@ public class Client extends Constant {
                         System.out.println("Please enter new No of Tickets to Book");
                         int newBookNumberOfTickets = Integer.parseInt(sc2.nextLine());
                         log="Change Movie Tickets";
-                        String res = servant.exchangeTickets(userID, bookMovieID, newBookMovieID, newBookMovieName, newBookNumberOfTickets);
+                        String res = movieRef.exchangeTickets(userID, bookMovieID, newBookMovieID, newBookMovieName, newBookNumberOfTickets);
                         writeToLogFile("exchangeMovieTickets",userID+" "+bookMovieID+" "+newBookMovieID+" "+newBookMovieName+" "+newBookNumberOfTickets,res);
                         System.out.println(res);
                         break;
 
                     }
                     case 5:{
-                        startProg(ncRef);
+                        startProg();
                         break;
                     }
                     default:
-                        servant.shutdown();
+//                        servant.shutdown();
                         break;
                 }
             }
@@ -254,15 +261,18 @@ public class Client extends Constant {
 
     public static String getServerPort(String userID){
         String serverSubstring = userID.substring(0,3);
-        switch (serverSubstring){
-            case "ATW":
-                return "atw";
-            case "OUT":
-                return "out";
-            case "VER":
-                return "ver";
-        }
-        return null;
+        String role = userID.substring(3,4);
+            if (serverSubstring.equalsIgnoreCase("ATW")) {
+                movieRef = atwService.getPort(MovieInterface.class);
+                return "atwater";
+            } else if (serverSubstring.equalsIgnoreCase("OUT")) {
+                movieRef = outService.getPort(MovieInterface.class);
+                return "outremont";
+            } else if (serverSubstring.equalsIgnoreCase("VER")) {
+                movieRef = verService.getPort(MovieInterface.class);
+                return "verdun";
+            }
+        return "false";
     }
 
     public static String showAdminMenu(){

@@ -1,1 +1,11 @@
 06-03-2023 15:48:49 : addMovieSlots : ATWA1234 ATWM060323 AVATAR 40 :  : Movie Slot Added.
+06-03-2023 16:29:40 : listMovieShowsAvailability : ATWA1234 Avatar :  : Movie Show: ATWM070323 Capacity: 18
+
+Movie Show: OUTM070323 Capacity: 14
+
+06-03-2023 16:32:47 : addMovieSlots : ATWA1234 ATWM060323 AVATAR 20 :  : Movie Slot Added.
+06-03-2023 17:06:25 : addMovieSlots : ATWA1234 ATWM060323 AVATAR 20 :  : Movie Slot Added.
+06-03-2023 20:19:36 : addMovieSlots : ATWA1234 ATWM060323 AVATAR 20 :  : Movie Slot Added.
+06-03-2023 20:28:46 : addMovieSlots : ATWA1234 ATWM060323 AVATAR 20 :  : Movie Slot Added.
+06-03-2023 20:32:19 : addMovieSlots : ATWA1234 ATWM060323 AVATAR 20 :  : Movie Slot Added.
+13-03-2023 19:20:09 : addMovieSlots : ATWA1234 ATWM130323 AVATAR 60 :  : Movie Slot Added.

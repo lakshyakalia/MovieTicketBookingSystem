@@ -1,3 +1,18 @@
 06-03-2023 15:49:37 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from VER server.
 06-03-2023 15:49:54 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from VER server.
 06-03-2023 15:50:23 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from VER server.
+06-03-2023 16:20:16 : listMovieShowAvailabilityUDP : Avatar : Passed : List Movie Shows Availability using UDP from VER server.
+06-03-2023 16:20:56 : listMovieShowAvailabilityUDP : Avatar : Passed : List Movie Shows Availability using UDP from VER server.
+06-03-2023 16:21:20 : getBookingScheduleUDP : OUTA2022 : Passed : Getting Booking Schedule using UDP from VER server.
+06-03-2023 16:22:39 : getBookingScheduleUDP : ATWC2022 : Passed : Getting Booking Schedule using UDP from VER server.
+06-03-2023 16:24:07 : getBookingScheduleUDP : ATWC2022 : Passed : Getting Booking Schedule using UDP from VER server.
+06-03-2023 16:24:35 : getBookingScheduleUDP : ATWC2022 : Passed : Getting Booking Schedule using UDP from VER server.
+06-03-2023 16:25:09 : getBookingScheduleUDP : ATWC2022 : Passed : Getting Booking Schedule using UDP from VER server.
+06-03-2023 16:29:40 : listMovieShowAvailabilityUDP : Avatar : Passed : List Movie Shows Availability using UDP from VER server.
+06-03-2023 20:29:26 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from VER server.
+06-03-2023 20:30:22 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from VER server.
+06-03-2023 20:30:35 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from VER server.
+06-03-2023 20:31:02 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from VER server.
+06-03-2023 20:31:20 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from VER server.
+06-03-2023 20:31:21 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from VER server.
+06-03-2023 20:33:05 : getBookingScheduleUDP : ATWC1234 : Passed : Getting Booking Schedule using UDP from VER server.

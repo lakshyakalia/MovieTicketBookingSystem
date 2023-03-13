@@ -15,3 +15,79 @@ Tickets booked for movie: AVATAR at: {OUTM060323=2}
 
 Tickets booked for movie: AVATAR at: {}
 
+06-03-2023 16:20:10 : addMovieSlots : Movie- Avatar Show at- ATWM070323 20 : Passed : 20 slots for movie Avatar for movie ID ATWM070323 have been added.
+06-03-2023 16:20:16 : listMovieShowsAvailability : Avatar : Passed : Movie Show: ATWM070323 Capacity: 20
+
+
+
+06-03-2023 16:20:56 : listMovieShowAvailabilityUDP : Avatar : Passed : List Movie Shows Availability using UDP from ATW server.
+06-03-2023 16:21:20 : getBookingScheduleUDP : OUTA2022 : Passed : Getting Booking Schedule using UDP from ATW server.
+06-03-2023 16:22:33 : bookMovieTickets : ATWC2022 ATWM070323 Avatar 4 : Success : Tickets Booking Booked
+06-03-2023 16:22:39 : getBookingSchedule : ATWC2022 : Passed : Tickets booked for movie: Avatar at: {ATWM070323=4}
+
+
+
+06-03-2023 16:24:02 : cancelMovieTickets : ATWC2022 ATWM070323 Avatar 2 : Passed : Tickets successfully cancelled!
+06-03-2023 16:24:02 : exchangeTickets : Avatar : Passed : Tickets exchanged on ATW server.
+06-03-2023 16:24:07 : getBookingSchedule : ATWC2022 : Passed : Tickets booked for movie: Avatar at: {ATWM070323=2}
+
+Tickets booked for movie: Avatar at: {OUTM070323=2}
+
+06-03-2023 16:24:33 : bookMovieTickets : ATWC2022 ATWM070323 Avatar 2 : Success : Tickets Booking Updated
+06-03-2023 16:24:35 : getBookingSchedule : ATWC2022 : Passed : Tickets booked for movie: Avatar at: {ATWM070323=4}
+
+Tickets booked for movie: Avatar at: {}
+
+06-03-2023 16:25:07 : cancelMovieTickets : ATWC2022 ATWM070323 Avatar 2 : Passed : Tickets successfully cancelled!
+06-03-2023 16:25:07 : exchangeTickets : Avatar : Passed : Tickets exchanged on ATW server.
+06-03-2023 16:25:09 : getBookingSchedule : ATWC2022 : Passed : Tickets booked for movie: Avatar at: {ATWM070323=2}
+
+Tickets booked for movie: Avatar at: {OUTM070323=2}
+
+06-03-2023 16:29:40 : listMovieShowsAvailability : Avatar : Passed : Movie Show: ATWM070323 Capacity: 18
+
+Movie Show: OUTM070323 Capacity: 14
+
+06-03-2023 16:32:47 : addMovieSlots : Movie- AVATAR Show at- ATWM060323 20 : Passed : 20 slots for movie AVATAR for movie ID ATWM060323 have been added.
+06-03-2023 17:06:25 : addMovieSlots : Movie- AVATAR Show at- ATWM060323 20 : Passed : 20 slots for movie AVATAR for movie ID ATWM060323 have been added.
+06-03-2023 20:19:36 : addMovieSlots : Movie- AVATAR Show at- ATWM060323 20 : Passed : 20 slots for movie AVATAR for movie ID ATWM060323 have been added.
+06-03-2023 20:28:46 : addMovieSlots : Movie- AVATAR Show at- ATWM060323 20 : Passed : 20 slots for movie AVATAR for movie ID ATWM060323 have been added.
+06-03-2023 20:29:24 : bookMovieTickets : ATWC1234 ATWM060323 AVATAR 4 : Success : Tickets Booking Booked
+06-03-2023 20:29:26 : getBookingSchedule : ATWC1234 : Passed : Tickets booked for movie: AVATAR at: {ATWM060323=4}
+
+
+
+06-03-2023 20:29:45 : exchangeTickets : ATWC1234 ATWM060323 OUTM060323 AVATAR 2 : Failed : Invalid movie id.
+06-03-2023 20:30:22 : getBookingSchedule : ATWC1234 : Passed : Tickets booked for movie: AVATAR at: {ATWM060323=4}
+
+
+
+06-03-2023 20:30:34 : bookMovieTickets : ATWC1234 ATWM060323 AVATAR 5 : Success : Tickets Booking Updated
+06-03-2023 20:30:35 : getBookingSchedule : ATWC1234 : Passed : Tickets booked for movie: AVATAR at: {ATWM060323=9}
+
+
+
+06-03-2023 20:31:00 : bookMovieTickets : ATWC1234 OUTE060323 AVATAR 4 : Failed : You cannot book more than 3 ticket in other servers.
+06-03-2023 20:31:00 : exchangeTickets : AVATAR : Failed : Tickets exchanged on ATW server.
+06-03-2023 20:31:02 : getBookingSchedule : ATWC1234 : Passed : Tickets booked for movie: AVATAR at: {ATWM060323=9}
+
+
+
+06-03-2023 20:31:20 : getBookingSchedule : ATWC1234 : Passed : Tickets booked for movie: AVATAR at: {ATWM060323=9}
+
+
+
+06-03-2023 20:31:21 : getBookingSchedule : ATWC1234 : Passed : Tickets booked for movie: AVATAR at: {ATWM060323=9}
+
+
+
+06-03-2023 20:32:19 : addMovieSlots : Movie- AVATAR Show at- ATWM060323 20 : Passed : 20 slots for movie AVATAR for movie ID ATWM060323 have been added.
+06-03-2023 20:32:49 : bookMovieTickets : ATWC1234 ATWM060323 AVATAR 4 : Success : Tickets Booking Booked
+06-03-2023 20:33:03 : cancelMovieTickets : ATWC1234 ATWM060323 AVATAR 2 : Passed : Tickets successfully cancelled!
+06-03-2023 20:33:03 : exchangeTickets : AVATAR : Passed : Tickets exchanged on ATW server.
+06-03-2023 20:33:05 : getBookingSchedule : ATWC1234 : Passed : Tickets booked for movie: AVATAR at: {ATWM060323=2}
+
+Tickets booked for movie: AVATAR at: {OUTM060323=2}
+
+13-03-2023 19:20:09 : addMovieSlots : Movie- AVATAR Show at- ATWM130323 60 : Passed : 60 slots for movie AVATAR for movie ID ATWM130323 have been added.
+13-03-2023 19:20:37 : bookMovieTickets : OUTC1234 ATWM130323 AVATAR 2 : Success : Tickets Booking Booked

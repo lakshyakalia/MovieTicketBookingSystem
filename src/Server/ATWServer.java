@@ -1,11 +1,10 @@
 package Server;
 
 import Services.MovieTicketService;
-import movieTicketInterfaceApp.movieTicketInterface;
-import movieTicketInterfaceApp.movieTicketInterfaceHelper;
 import org.omg.CORBA.ORB;
 import org.omg.PortableServer.POA;
 
+import javax.xml.ws.Endpoint;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -18,33 +17,22 @@ public class ATWServer {
     public ATWServer() throws Exception {
         super();
     }
+    private static final String serverEndPoint = "http://localhost:8070/atwater";
 
     public static void main(String[] args) throws Exception {
         try{
-            // create and initialize the ORB
-            ORB orb = ORB.init(args, null);
-            POA rootpoa = (POA)orb.resolve_initial_references("RootPOA");
-            rootpoa.the_POAManager().activate();
 
             MovieTicketService atwMovieService = new MovieTicketService("atw","ATW");
-            atwMovieService.setORB(orb);
+            Endpoint endpoint = Endpoint.publish(serverEndPoint, atwMovieService);
 
-            org.omg.CORBA.Object ref = rootpoa.servant_to_reference(atwMovieService);
-            movieTicketInterface href = movieTicketInterfaceHelper.narrow(ref);
 
-            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
-            org.omg.CosNaming.NamingContextExt ncRef = org.omg.CosNaming.NamingContextExtHelper.narrow(objRef);
-
-            String name = "atw";
-            org.omg.CosNaming.NameComponent path[] = ncRef.to_name(name);
-            ncRef.rebind(path, href);
 
             System.out.println("ATW Server ready and waiting ...");
 
             requestListener(atwMovieService);
-            while (true) {
-                orb.run();
-            }
+//            while (true) {
+//                orb.run();
+//            }
 
 
         }

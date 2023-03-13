@@ -1,11 +1,10 @@
 package Server;
 
 import Services.MovieTicketService;
-import movieTicketInterfaceApp.movieTicketInterface;
-import movieTicketInterfaceApp.movieTicketInterfaceHelper;
 import org.omg.CORBA.ORB;
 import org.omg.PortableServer.POA;
 
+import javax.xml.ws.Endpoint;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -16,33 +15,20 @@ public class VERServer {
 
     public VERServer() throws Exception {
     }
+    private static final String serverEndPoint = "http://localhost:8090/verdun";
 
     public static void main(String[] args){
         try{
-            // create and initialize the ORB
-            ORB orb = ORB.init(args, null);
-            POA rootpoa = (POA)orb.resolve_initial_references("RootPOA");
-            rootpoa.the_POAManager().activate();
 
             MovieTicketService verMovieService = new MovieTicketService("ver","VER");
-            verMovieService.setORB(orb);
-
-            org.omg.CORBA.Object ref = rootpoa.servant_to_reference(verMovieService);
-            movieTicketInterface href = movieTicketInterfaceHelper.narrow(ref);
-
-            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
-            org.omg.CosNaming.NamingContextExt ncRef = org.omg.CosNaming.NamingContextExtHelper.narrow(objRef);
-
-            String name = "ver";
-            org.omg.CosNaming.NameComponent path[] = ncRef.to_name(name);
-            ncRef.rebind(path, href);
+            Endpoint endpoint = Endpoint.publish(serverEndPoint, verMovieService);
 
             System.out.println("VER Server ready and waiting ...");
 
             requestListener(verMovieService);
-            while (true) {
-                orb.run();
-            }
+//            while (true) {
+//                orb.run();
+//            }
 
 
         }

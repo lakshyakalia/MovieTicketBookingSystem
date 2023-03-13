@@ -13,3 +13,37 @@ Tickets booked for movie: AVATAR at: {OUTM060323=2}
 
 Tickets booked for movie: AVATAR at: {}
 
+06-03-2023 20:29:24 : bookMovieTickets : ATWC1234 ATWM060323 AVATAR 4 :  : Tickets Booked.
+06-03-2023 20:29:26 : getBookingSchedule : ATWC1234 :  : Tickets booked for movie: AVATAR at: {ATWM060323=4}
+
+
+
+06-03-2023 20:29:45 : exchangeMovieTickets : ATWC1234 ATWM060323 OUTM060323 AVATAR 2 :  : Invalid movie id.
+06-03-2023 20:30:22 : getBookingSchedule : ATWC1234 :  : Tickets booked for movie: AVATAR at: {ATWM060323=4}
+
+
+
+06-03-2023 20:30:34 : bookMovieTickets : ATWC1234 ATWM060323 AVATAR 5 :  : Tickets Booked.
+06-03-2023 20:30:35 : getBookingSchedule : ATWC1234 :  : Tickets booked for movie: AVATAR at: {ATWM060323=9}
+
+
+
+06-03-2023 20:31:00 : exchangeMovieTickets : ATWC1234 ATWM060323 OUTE060323 AVATAR 4 :  : Movie Tickets Exchanged!
+06-03-2023 20:31:02 : getBookingSchedule : ATWC1234 :  : Tickets booked for movie: AVATAR at: {ATWM060323=9}
+
+
+
+06-03-2023 20:31:20 : getBookingSchedule : ATWC1234 :  : Tickets booked for movie: AVATAR at: {ATWM060323=9}
+
+
+
+06-03-2023 20:31:21 : getBookingSchedule : ATWC1234 :  : Tickets booked for movie: AVATAR at: {ATWM060323=9}
+
+
+
+06-03-2023 20:32:49 : bookMovieTickets : ATWC1234 ATWM060323 AVATAR 4 :  : Tickets Booked.
+06-03-2023 20:33:03 : exchangeMovieTickets : ATWC1234 ATWM060323 OUTM060323 AVATAR 2 :  : Movie Tickets Exchanged!
+06-03-2023 20:33:05 : getBookingSchedule : ATWC1234 :  : Tickets booked for movie: AVATAR at: {ATWM060323=2}
+
+Tickets booked for movie: AVATAR at: {OUTM060323=2}
+
