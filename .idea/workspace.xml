@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Added concurrent hashmap">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logs/ATWA1234.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logs/ATWA1234.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logs/ATWC1234.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logs/ATWC1234.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logs/ATWserver.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logs/ATWserver.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logs/OUTA1234.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logs/OUTA1234.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logs/OUTserver.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logs/OUTserver.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logs/VERserver.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logs/VERserver.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/MovieTicketService.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/MovieTicketService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/MovieTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/MovieTicketService.java" afterDir="false" />
     </list>
@@ -170,7 +175,7 @@
       <workItem from="1678134318795" duration="6541000" />
       <workItem from="1678489379069" duration="79000" />
       <workItem from="1678735751540" duration="6932000" />
-      <workItem from="1679438085205" duration="3079000" />
+      <workItem from="1679438085205" duration="10414000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1674885238951</created>
@@ -517,5 +522,21 @@
     <MESSAGE value="Updated Readme file" />
     <MESSAGE value="Updated exchange movie func" />
     <option name="LAST_COMMIT_MESSAGE" value="Updated exchange movie func" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
+          <line>175</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Services/MovieTicketService.java</url>
+          <line>442</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

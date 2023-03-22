@@ -14,3 +14,20 @@ Movie Show: OUTM070323 Capacity: 14
 
 
 
+22-03-2023 17:42:02 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 20 :  : Movie Slot Added.
+22-03-2023 17:51:14 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 4 :  : Movie Slot Added.
+22-03-2023 18:09:57 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 20 :  : Movie Slot Added.
+22-03-2023 18:25:54 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 20 :  : Movie Slot Added.
+22-03-2023 18:26:03 : addMovieSlots : ATWA1234 ATWE220323 AVATAR 50 :  : Movie Slot Added.
+22-03-2023 18:28:32 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 20 :  : Movie Slot Added.
+22-03-2023 18:33:13 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 10 :  : Movie Slot Added.
+22-03-2023 18:40:13 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 20 :  : Movie Slot Added.
+22-03-2023 18:45:08 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 20 :  : Movie Slot Added.
+22-03-2023 18:50:29 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 20 :  : Movie Slot Added.
+22-03-2023 19:05:33 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 20 :  : Movie Slot Added.
+22-03-2023 19:11:01 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 20 :  : Movie Slot Added.
+22-03-2023 19:13:00 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 20 :  : Movie Slot Added.
+22-03-2023 19:17:09 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 20 :  : Movie Slot Added.
+22-03-2023 19:27:57 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 20 :  : Movie Slot Added.
+22-03-2023 19:33:04 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 20 :  : Movie Slot Added.
+22-03-2023 19:37:23 : addMovieSlots : ATWA1234 ATWM220323 AVATAR 20 :  : Movie Slot Added.

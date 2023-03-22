@@ -46,6 +46,7 @@ public class MovieTicketService {
 
     public String log;
     public String Status;
+    public int bookingLimit = 3;
 
     static {
         file.put("ATW","ATWserver.txt");
@@ -169,17 +170,35 @@ public class MovieTicketService {
         String serverResponse = "";
 
         String userTargetServer = userID.substring(0,3).toLowerCase();
-        boolean flag = false;
-        if(!userTargetServer.equals(targetServer) && noOfTickets > 3){
-            flag = true;
+        String userBookings = getBookingSchedule(userID);
+        String[] userBookingsArray = userBookings.split("\n");
+
+        if(!targetServer.equals(userTargetServer)){
+            for (String x : userBookingsArray) {
+                if (x.contains(movieID.substring(3))) {
+                    serverResponse = "You already have a booking for a movie on this date.";
+                    writeToLogFile("bookMovieTickets",userID+" "+movieID+" "+movieName+" "+noOfTickets,Status,"You already have a booking for a movie on this date.");
+                    return serverResponse;
+                }
+            }
         }
-//        Condition if user books same movie id in other server
-        if(flag){
-//            Improve condition
-            writeToLogFile("bookMovieTickets",userID+" "+movieID+" "+movieName+" "+noOfTickets,Status,"You cannot book more than 3 ticket in other servers.");
-            serverResponse = "Cannot book more than 3 ticket in other server";
+
+        if(!targetServer.equals(userTargetServer) && this.bookingLimit <= 0){
+            serverResponse = "Cannot make more than 3 bookings in other server";
+            writeToLogFile("bookMovieTickets",userID+" "+movieID+" "+movieName+" "+noOfTickets,Status,"Cannot make more than 3 bookings in other server.");
+            return serverResponse;
         }
-        else if(this.serverID.equals(targetServer)){
+
+//        boolean flag = false;
+//        if(!userTargetServer.equals(targetServer) && noOfTickets > 3){
+//            flag = true;
+//        }
+//        if(flag){
+////            Improve condition
+//            writeToLogFile("bookMovieTickets",userID+" "+movieID+" "+movieName+" "+noOfTickets,Status,"You cannot book more than 3 ticket in other servers.");
+//            serverResponse = "Cannot book more than 3 ticket in other server";
+//        }
+        if(this.serverID.equals(targetServer)){
             if(movieMap.containsKey(movieName)){
                 if(movieMap.get(movieName).containsKey(movieID)){
                     int capacity = movieMap.get(movieName).get(movieID);
@@ -194,6 +213,7 @@ public class MovieTicketService {
                                     Status="Success";
                                     writeToLogFile("bookMovieTickets",userID+" "+movieID+" "+movieName+" "+noOfTickets,Status,"Tickets Booking Updated");
                                     serverResponse = "Tickets Booked.";
+                                    bookingLimit--;
                                 }
                                 else {
                                     HashMap<String,Integer> temp = new HashMap<>();
@@ -207,6 +227,7 @@ public class MovieTicketService {
                                     Status="Success";
                                     writeToLogFile("bookMovieTickets",userID+" "+movieID+" "+movieName+" "+noOfTickets,Status,"Tickets Booking Booked");
                                     serverResponse = "Tickets Booked.";
+                                    bookingLimit--;
                                 }
                             }
                             else {
@@ -224,6 +245,7 @@ public class MovieTicketService {
                                 Status="Success";
                                 writeToLogFile("bookMovieTickets",userID+" "+movieID+" "+movieName+" "+noOfTickets,Status,"Tickets Booking Booked");
                                 serverResponse = "Tickets Booked.";
+                                bookingLimit--;
                             }
                         }
                         else{
@@ -241,6 +263,7 @@ public class MovieTicketService {
                             Status="Success";
                             writeToLogFile("bookMovieTickets",userID+" "+movieID+" "+movieName+" "+noOfTickets,Status,"Tickets Booking Booked");
                             serverResponse = "Tickets Booked.";
+                            bookingLimit--;
                         }
                     }
                     else{
@@ -414,12 +437,22 @@ public class MovieTicketService {
                             newMovieCapacityExists = sendMsgToServer("exchangeTicketsCapacityUDP",userID,new_movieName,new_movieID,numberOfTickets,verPort,null);
                         }
                         if(newMovieCapacityExists.equals("true")){
-                            String res1 = this.bookMovieTickets(userID,new_movieID,new_movieName,numberOfTickets);
-                            if(res1.equals("Tickets Booked.")){
-                                String res2 = this.cancelMovieTickets(userID,movieID,oldMovieName,numberOfTickets);
+                            String res2 = this.cancelMovieTickets(userID,movieID,oldMovieName,numberOfTickets);
+
+                            if(res2.equals("Tickets successfully cancelled!")){
+                                String res1 = this.bookMovieTickets(userID,new_movieID,new_movieName,numberOfTickets);
+                                if(!res1.equals("Tickets Booked.")){
+                                    responseString = "Movie Tickets Exchange Failed!";
+                                    writeToLogFile("exchangeTickets",new_movieName,Status,"Movie Tickets Exchange Failed!");
+                                    String res3 = this.bookMovieTickets(userID,movieID,oldMovieName,numberOfTickets);
+                                }
+                                else{
+                                    responseString = "Movie Tickets Exchanged!";
+                                    writeToLogFile("exchangeTickets",new_movieName,Status,"Tickets exchanged on " +this.serverName +" server.");
+                                }
                             }
 
-                            responseString = "Movie Tickets Exchanged!";
+//                            responseString = "Movie Tickets Exchanged!";
                             writeToLogFile("exchangeTickets",new_movieName,Status,"Tickets exchanged on " +this.serverName +" server.");
                         }
                     }
