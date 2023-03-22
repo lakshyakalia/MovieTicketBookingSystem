@@ -91,3 +91,8 @@ Tickets booked for movie: AVATAR at: {OUTM060323=2}
 
 13-03-2023 19:20:09 : addMovieSlots : Movie- AVATAR Show at- ATWM130323 60 : Passed : 60 slots for movie AVATAR for movie ID ATWM130323 have been added.
 13-03-2023 19:20:37 : bookMovieTickets : OUTC1234 ATWM130323 AVATAR 2 : Success : Tickets Booking Booked
+22-03-2023 17:13:57 : addMovieSlots : Movie- AVATAR Show at- ATWM220323 20 : Passed : 20 slots for movie AVATAR for movie ID ATWM220323 have been added.
+22-03-2023 17:14:04 : listMovieShowsAvailability : AVATAR : Passed : Movie Show: ATWM220323 Capacity: 20
+
+
+

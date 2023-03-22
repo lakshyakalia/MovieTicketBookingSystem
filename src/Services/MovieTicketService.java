@@ -67,12 +67,6 @@ public class MovieTicketService {
         super();
 
     }
-    public void setORB(ORB orb_val) {
-        orb = orb_val;
-    }
-    public void shutdown() {
-        orb.shutdown(false);
-    }
 
     public String addMovieSlots(String movieID, String movieName, int bookingCapacity){
         log = "Slots not added.";
@@ -179,7 +173,9 @@ public class MovieTicketService {
         if(!userTargetServer.equals(targetServer) && noOfTickets > 3){
             flag = true;
         }
+//        Condition if user books same movie id in other server
         if(flag){
+//            Improve condition
             writeToLogFile("bookMovieTickets",userID+" "+movieID+" "+movieName+" "+noOfTickets,Status,"You cannot book more than 3 ticket in other servers.");
             serverResponse = "Cannot book more than 3 ticket in other server";
         }

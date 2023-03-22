@@ -5,44 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b01be8b-ae8a-47d8-8148-960abbf9d1a7" name="Changes" comment="Added concurrent hashmap">
-      <change afterPath="$PROJECT_DIR$/src/Interface/MovieInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/AdminInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/AdminInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/AdminInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/CustomerInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/CustomerInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/CustomerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/CustomerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Logs/ATWA1234.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logs/ATWA1234.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Logs/ATWC1234.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logs/ATWC1234.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Logs/ATWserver.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logs/ATWserver.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Logs/OUTA1234.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logs/OUTA1234.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Logs/OUTserver.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logs/OUTserver.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Logs/VERserver.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logs/VERserver.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ATWServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ATWServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ATWServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ATWServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/OUTServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/OUTServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/OUTServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/OUTServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/VERServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/VERServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/VERServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/VERServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/MovieTicketService.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/MovieTicketService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/MovieTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/MovieTicketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/movieTicketInterface.idl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/movieTicketInterfaceApp/_movieTicketInterfaceStub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/movieTicketInterfaceApp/_movieTicketInterfaceStub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/movieTicketInterfaceApp/movieTicketInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/movieTicketInterfaceApp/movieTicketInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/movieTicketInterfaceApp/movieTicketInterfaceHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/movieTicketInterfaceApp/movieTicketInterfaceHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/movieTicketInterfaceApp/movieTicketInterfaceHolder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/movieTicketInterfaceApp/movieTicketInterfaceHolder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/movieTicketInterfaceApp/movieTicketInterfaceOperations.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/movieTicketInterfaceApp/movieTicketInterfaceOperations.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/movieTicketInterfaceApp/movieTicketInterfacePOA.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/movieTicketInterfaceApp/movieTicketInterfacePOA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orb.db/NC0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orb.db/counter" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orb.db/servers.db" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,24 +42,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/laksh/Intellij-workspace/RealEstateProject_APP/RealEstateProject_APP",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/laksh/Intellij-workspace/RealEstateProject_APP/RealEstateProject_APP&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.Client">
     <configuration name="ATWServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
@@ -203,7 +169,8 @@
       <workItem from="1677085641548" duration="25445000" />
       <workItem from="1678134318795" duration="6541000" />
       <workItem from="1678489379069" duration="79000" />
-      <workItem from="1678735751540" duration="6503000" />
+      <workItem from="1678735751540" duration="6932000" />
+      <workItem from="1679438085205" duration="3079000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1674885238951</created>
